@@ -1,5 +1,6 @@
 package edu.csupomona.cs480.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -130,6 +131,12 @@ public class WebController {
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
+	}
+
+	@RequestMapping(value = "/cs480/timecheck", method = RequestMethod.GET)
+	String liveCheck() {
+		String time = java.time.LocalDateTime.now().toString();
+		return time;
 	}
 
 }
