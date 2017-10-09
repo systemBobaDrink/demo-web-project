@@ -146,5 +146,10 @@ public class WebController {
 		String time = java.time.LocalDateTime.now().toString();
 		return time;
 	}
+	
+	@RequestMapping(value = "/cs480/secretbase", method = RequestMethod.GET)
+	String entryPassword() {
+		return "To enter the secret base, you must first say the secret password.";
+	}
 
 }
