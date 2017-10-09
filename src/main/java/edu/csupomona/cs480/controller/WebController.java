@@ -151,5 +151,12 @@ public class WebController {
 	String entryPassword() {
 		return "To enter the secret base, you must first say the secret password.";
 	}
+	
+	@RequestMapping(value = "/cs480/colorChoice", method = RequestMethod.GET)
+	String chooseColor() {
+		return "The default color is black, sorry you can't change it!";
+		
+	}
+	
 
 }
