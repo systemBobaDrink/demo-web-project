@@ -16,6 +16,22 @@ function healthCheck() {
 			});
 }
 
+function getEvent() {
+	$.ajax(
+			{
+				type : "GET",
+				url  : "/cs480/event",
+				data : {
+				},
+				success : function(result) {
+					$('#event').text(result);
+				},
+				error: function (jqXHR, exception) {
+					$('#event').text("Failed to get the status");
+				}
+			});
+}
+
 
 function deleteUser(userId) {
 	$.ajax(

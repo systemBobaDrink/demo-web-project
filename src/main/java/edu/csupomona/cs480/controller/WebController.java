@@ -16,6 +16,8 @@ import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.UserManager;
 
 
+
+
 /**
  * This is the controller used by Spring framework.
  * <p>
@@ -52,6 +54,11 @@ public class WebController {
 		// with the URL: http://localhost:8080/
 		return "OK";
 	}
+	
+	@RequestMapping(value = "/cs480/event", method = RequestMethod.GET)
+	String getEvent() {		
+		return "This is the event ID";
+	}
 
 	/**
 	 * This is a simple example of how to use a data manager
@@ -68,6 +75,7 @@ public class WebController {
 		User user = userManager.getUser(userId);
 		return user;
 	}
+	
 
 	/**
 	 * This is an example of sending an HTTP POST request to
