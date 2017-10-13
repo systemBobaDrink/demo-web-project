@@ -4,6 +4,13 @@ var cs480App = angular.module('cs480App', []);
 
 cs480App.controller('UserCtrl', function ($scope, $http) {
 
+	$scope.getMap = function() {
+		$http.get("cs480/maps")
+			.success(function(data){
+      $scope.map = data;
+		});
+	}
+
   $scope.loadUsers = function() {
 	  $http.get("cs480/users/list")
 	  	.success(function(data){
@@ -33,5 +40,6 @@ cs480App.controller('UserCtrl', function ($scope, $http) {
   }
 
   $scope.loadUsers();
+	$scope.getMap();
 
 });

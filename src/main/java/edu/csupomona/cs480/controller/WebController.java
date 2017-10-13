@@ -3,6 +3,11 @@ package edu.csupomona.cs480.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.model.GeocodingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -156,6 +161,23 @@ public class WebController {
 	String chooseColor() {
 		return "The default color is black, sorry you can't change it!";
 		
+	}
+
+	@RequestMapping(value = "/cs480/maps", method = RequestMethod.GET)
+	String pomonaMap() {
+		GeoApiContext context = new GeoApiContext.Builder()
+				.apiKey("AIzaSyDcBW_7Xk8gwoyVKlQ3F91thCRtmaDP8ng")
+				.build();
+		try {
+			GeocodingResult[] results = GeocodingApi.geocode(context,
+					"13144 Arabella Dr Cerritos, CA 90703").await();
+			String thing = results[0].addressComponents[0].longName;
+			return thing;
+
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "Failed";
 	}
 	
 
