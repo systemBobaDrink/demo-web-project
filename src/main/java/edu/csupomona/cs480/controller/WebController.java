@@ -1,5 +1,6 @@
 package edu.csupomona.cs480.controller;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -8,6 +9,10 @@ import com.google.gson.GsonBuilder;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -160,6 +165,13 @@ public class WebController {
 	@RequestMapping(value = "/cs480/colorChoice", method = RequestMethod.GET)
 	String chooseColor() {
 		return "The default color is black, sorry you can't change it!";
+		
+	}
+	@RequestMapping(value = "/cs480/jsoup", method = RequestMethod.GET)
+	String jsoup() throws IOException {
+		Document doc = Jsoup.connect("http://target.com/").get();
+		Elements e = doc.select("a");
+		return ("Target Finds: " + "\n" + e);
 		
 	}
 
