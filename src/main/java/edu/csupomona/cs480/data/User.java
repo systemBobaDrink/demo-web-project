@@ -48,4 +48,7 @@ public class User {
 	public void setCreationTime(String creationTime) {
 		this.creationTime = creationTime;
 	}
+	public String toString() {
+		return String.format("User[name='%s', major='%s', id='%s']", name, major, id);
+	}
 }

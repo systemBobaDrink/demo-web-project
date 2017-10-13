@@ -75,6 +75,23 @@
             <scope>test</scope>
         </dependency>
         
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc  NOT SURE if this is used even-->
+		<dependency>
+ 		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+  		    <version>4.3.11.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        
+		<dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+		
        
 	</dependencies>
 
