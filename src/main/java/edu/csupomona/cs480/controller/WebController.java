@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.Table;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.maps.GeoApiContext;
@@ -68,6 +70,17 @@ public class WebController {
 	@RequestMapping(value = "/cs480/event", method = RequestMethod.GET)
 	String getEvent() {		
 		return "This is the event ID";
+	}
+	
+	@RequestMapping(value = "/cs480/guava", method = RequestMethod.GET)
+	String guava() {		
+		Table<String, String, Integer> eventsInfoTable = HashBasedTable.create();
+		eventsInfoTable.put("Activity1", "User1", 1);
+		eventsInfoTable.put("Activity2", "User2", 2);
+		eventsInfoTable.put("Activity3", "User3", 3);
+		eventsInfoTable.put("Activity4", "User4", 4);
+		
+		return eventsInfoTable.toString();
 	}
 
 	/**
