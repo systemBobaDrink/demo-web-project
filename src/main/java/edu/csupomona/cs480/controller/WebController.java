@@ -24,6 +24,8 @@ import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.UserManager;
 
+import java.sql.*;
+
 
 
 
@@ -214,5 +216,31 @@ public class WebController {
 	    
 	    //Returns the string of the object found
 	    return searching;
+	}
+	
+	@RequestMapping(value = "/cs480/sqlTest", method = RequestMethod.GET)
+	String testConnection() {
+		String returnThis = "Testing\n";
+		try {
+			//Get a connection to database
+			Connection myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?useSSL=false", "root", "SystemBobaDrink321");
+			
+			//Create a statement
+			Statement myState = myCon.createStatement();
+			
+			//Execute SQL Query
+			ResultSet myRs = myState.executeQuery("select * from users");
+			
+			//Process the Results
+			while (myRs.next()) {
+				returnThis += myRs.getString("firstName") + ", " + myRs.getString("lastName") + ", " + 
+								   myRs.getString("major") + ".\n";
+			}
+			
+		}
+		catch (Exception e) {
+
+		}
+		return returnThis;
 	}
 }
