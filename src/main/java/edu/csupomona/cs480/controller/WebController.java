@@ -1,7 +1,6 @@
 package edu.csupomona.cs480.controller;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import com.google.common.collect.HashBasedTable;
@@ -16,6 +15,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,9 +24,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.model.GeocodingResult;
+
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.UserManager;
+
+import java.sql.*;
 
 
 
@@ -205,5 +212,54 @@ public class WebController {
 		return "Failed";
 	}
 	
+	//
+	@Autowired 
+	JdbcTemplate jt;
 
+	@RequestMapping(value = "/cs480/jdbcTestFindUser", method = RequestMethod.GET)
+	String findUser() {
+		//Deletes table if previously exists, creates new one afterwords.
+		jt.execute("DROP TABLE users IF EXISTS");
+	    jt.execute("CREATE TABLE users(id SERIAL, name VARCHAR(255), major VARCHAR(255))");
+	    
+	    //Dummy data for database
+	    jt.execute("INSERT INTO users (id, name, major) values (1, 'John Adams', 'Computer Science')");
+	    jt.execute("INSERT INTO users (id, name, major) values (2, 'Alex Cremmins', 'Engineer')");
+	    jt.execute("INSERT INTO users (id, name, major) values (3, 'Joseph Mendoza', 'Liberal Arts')");
+	    
+	    //Determines how the query will search
+	    String sql = "SELECT NAME FROM users WHERE id = ?";
+	    
+	    //Query search: Simply looks for the object with an id == 2
+	    String searching = (String)jt.queryForObject(sql, new Object[] { 2 }, String.class);
+	    
+	    //Returns the string of the object found
+	    return searching;
+	}
+	
+	@RequestMapping(value = "/cs480/sqlTest", method = RequestMethod.GET)
+	String testConnection() {
+		String returnThis = "Testing\n";
+		try {
+			//Get a connection to database
+			Connection myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?useSSL=false", "root", "SystemBobaDrink321");
+			
+			//Create a statement
+			Statement myState = myCon.createStatement();
+			
+			//Execute SQL Query
+			ResultSet myRs = myState.executeQuery("select * from users");
+			
+			//Process the Results
+			while (myRs.next()) {
+				returnThis += myRs.getString("firstName") + ", " + myRs.getString("lastName") + ", " + 
+								   myRs.getString("major") + ".\n";
+			}
+			
+		}
+		catch (Exception e) {
+
+		}
+		return returnThis;
+	}
 }
