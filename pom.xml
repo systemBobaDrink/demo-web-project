@@ -82,9 +82,9 @@
         </dependency>
         
        <dependency>
-          <groupId>joda-time</groupId>
-          <artifactId>joda-time</artifactId>
-          <version>2.9.9</version>
+          <groupId>joda-time</groupId>
+          <artifactId>joda-time</artifactId>
+          <version>2.9.9</version>
        </dependency>
        
  <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc  NOT SURE if this is used even-->
