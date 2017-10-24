@@ -188,7 +188,7 @@ public class WebController {
 		
 	}
 	@RequestMapping(value = "/cs480/jsoup", method = RequestMethod.GET)
-	String jsoup() throws IOException {
+	public static String jsoup() throws IOException {
 		Document doc = Jsoup.connect("http://target.com/").get();
 		Elements e = doc.select("a");
 		return ("Target Finds: " + "\n" + e);
