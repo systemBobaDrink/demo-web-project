@@ -196,7 +196,7 @@ public class WebController {
 	}
 
 	@RequestMapping(value = "/cs480/maps", method = RequestMethod.GET)
-	String pomonaMap() {
+	public static String pomonaMap() {
 		GeoApiContext context = new GeoApiContext.Builder()
 				.apiKey("AIzaSyDcBW_7Xk8gwoyVKlQ3F91thCRtmaDP8ng")
 				.build();
