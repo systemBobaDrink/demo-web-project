@@ -178,7 +178,7 @@ public class WebController {
 	}
 	
 	@RequestMapping(value = "/cs480/secretbase", method = RequestMethod.GET)
-	String entryPassword() {
+	public static String entryPassword() {
 		return "To enter the secret base, you must first say the secret password.";
 	}
 	
