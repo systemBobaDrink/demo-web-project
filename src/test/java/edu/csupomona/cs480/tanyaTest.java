@@ -8,12 +8,12 @@ public class tanyaTest extends TestCase {
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		String eventName = "Event1";
+		eventName = "Event1";
 	}
 
 	protected void tearDown() throws Exception {
 		super.tearDown();
-		String eventName = "";
+		eventName = "";
 	}
 
 	public void testGetEvent() {

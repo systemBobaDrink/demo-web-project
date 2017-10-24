@@ -75,8 +75,7 @@ public class WebController {
 	}
 	
 	@RequestMapping(value = "/cs480/event", method = RequestMethod.GET)
-	public static
-	String getEvent(String name) {		
+	public static String getEvent(String name) {		
 		return "Event ID";
 	}
 	
