@@ -32,5 +32,5 @@ Running the Project Locally
 - http://localhost:8080/cs480/ping
 - http://localhost:8080/cs480/home
 
-Testing Jenkins integration. Test #2 Test #3 Test #4
+Testing Jenkins integration. Test #2 Test #3 Test #4 Test #5 
 
