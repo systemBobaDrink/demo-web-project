@@ -2,12 +2,54 @@
 <html>
 	<head>
 	    <title>Paired Create Event Page</title>
+	    <!-- Angular Library -->
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	    <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
 		<div ng-app="pairedApp" ng-controller="pairedCreateEventController">
-			Create event: {{event}}
+			<header>Create Event</header>
+
+			<form>
+			  <div class="form-group">
+			    <label for="eventCreator">Creator:</label>
+			    <input type="userID" class="form-control" id="userID">
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="location">Location:</label>
+			    <input type="location" class="form-control" id="location">
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="time">Time:</label>
+			    <input type="time" class="form-control" id="time">
+			  </div>
+			  
+			  <div class="container">
+			  <div class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+			    <span class="caret"></span></button>
+			    <ul class="dropdown-menu">
+			      <li class="dropdown-header">Dropdown header 1</li>
+			      <li><a href="#">HTML</a></li>
+			      <li><a href="#">CSS</a></li>
+			      <li><a href="#">JavaScript</a></li>
+			      <li class="divider"></li>
+			      <li class="dropdown-header">Dropdown header 2</li>
+			      <li><a href="#">About Us</a></li>
+			    </ul>
+			  </div>
+			</div>
+			   <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+			
 			
 		</div>
 	</body>

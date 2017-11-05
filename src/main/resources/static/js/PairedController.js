@@ -9,7 +9,8 @@ app.controller('pairedEventController', function($scope) {
 });
 
 app.controller('pairedCreateEventController', function($scope) {
-	$scope.event = "User1";
+	$scope.eventName = "Name of Event";
+	$scope.categories = ["Art", "Rock Climbing", "Studying", "Tennis", "Tutoring"];
 });
 
 app.controller('pairedYourEventsController', function($scope) {
