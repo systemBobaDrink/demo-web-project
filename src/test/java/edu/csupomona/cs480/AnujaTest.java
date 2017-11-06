@@ -3,7 +3,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import edu.csupomona.cs480.controller.WebController;
+import edu.csupomona.cs480.controller.RestWebController;
 import junit.framework.TestCase;
 
 public class AnujaTest extends TestCase{
@@ -21,6 +21,6 @@ public class AnujaTest extends TestCase{
 	@Test 
 	public void testMessage() {
 		
-		 assertEquals("TestMessageAnuja" , "13144", WebController.pomonaMap());
+		 assertEquals("TestMessageAnuja" , "13144", RestWebController.pomonaMap());
 	}
 }

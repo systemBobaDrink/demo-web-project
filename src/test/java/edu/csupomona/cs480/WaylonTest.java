@@ -2,7 +2,7 @@ package edu.csupomona.cs480;
 
 import org.junit.Test;
 
-import edu.csupomona.cs480.controller.WebController;
+import edu.csupomona.cs480.controller.RestWebController;
 import junit.framework.TestCase;
 
 public class WaylonTest extends TestCase{
@@ -21,7 +21,7 @@ public class WaylonTest extends TestCase{
 	@Test
 	public void testSecretMessage() {
 //		System.out.println("Test printing2" + secretMessage);
-		assertEquals(secretMessage, WebController.entryPassword());
+		assertEquals(secretMessage, RestWebController.entryPassword());
 	}
 	
 
