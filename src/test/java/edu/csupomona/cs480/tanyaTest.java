@@ -1,6 +1,6 @@
 package edu.csupomona.cs480;
 
-import edu.csupomona.cs480.controller.WebController;
+import edu.csupomona.cs480.controller.RestWebController;
 import junit.framework.TestCase;
 
 public class tanyaTest extends TestCase {
@@ -18,7 +18,7 @@ public class tanyaTest extends TestCase {
 
 	public void testGetEvent() {
 		String expectedVal = "Event ID";
-		String returnVal = WebController.getEvent(eventName);
+		String returnVal = RestWebController.getEvent(eventName);
 		assertEquals(returnVal, expectedVal);
 	}
 

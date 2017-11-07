@@ -1,6 +1,6 @@
 package edu.csupomona.cs480;
 
-import edu.csupomona.cs480.controller.WebController;
+import edu.csupomona.cs480.controller.RestWebController;
 import junit.framework.TestCase;
 
 public class EricTest extends TestCase {
@@ -21,7 +21,7 @@ public class EricTest extends TestCase {
 					"<a href=\"javascript:void(0)\" class=\"link link-grayDarkest\" rel=\"nofollow\">ca privacy rights</a>\n" +
 					"<a href=\"javascript:void(0)\" class=\"link link-grayDarkest\" rel=\"nofollow\">ca supply chain act</a>\n" +
 					"<a href=\"javascript:void(0)\" class=\"js-privacy-update link link-orange\" data-value=\"privacyPolicy\" data-ref=\"/spot/terms/privacy-policy\"></a>";
-			String returnVal = WebController.jsoup();
+			String returnVal = RestWebController.jsoup();
 			assertEquals(returnVal, expectedVal);
 		} catch(Exception e) {
 			e.printStackTrace();

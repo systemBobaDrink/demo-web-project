@@ -1,0 +1,26 @@
+<?php 
+
+define('DB_SERVER', 'mydatabase.ckoxrzfooypv.us-east-2.rds.amazonaws.com');
+define('DB_USERNAME', 'systembobadrink');
+define('DB_PASSWORD', 'databasepassword');
+define('DB_DATABASE', 'users');
+
+//define('DB_SERVER', 'localhost');
+//define('DB_USERNAME', 'root');
+//define('DB_PASSWORD', 'Systembobadrink321');
+//define('DB_DATABASE', 'users');
+
+
+$dbhandle=new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE) or die("Unable to Connect DB");
+
+echo 'a';
+
+$scope.name2="in connection";
+
+return json_encode("in connection");
+
+
+// $connection = mysql_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD) or die(mysql_error());
+// $database = mysql_select_db(DB_DATABASE) or die(mysql_error());
+
+?>
