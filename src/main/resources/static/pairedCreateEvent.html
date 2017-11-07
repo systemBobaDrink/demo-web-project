@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <link href="src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
   <style>
     /* Format navbar */ 
     .navbar {
@@ -20,19 +21,10 @@
       padding: 10px;
     }
     
-    .row.match-my-cols {
-    overflow: hidden; 
-	}
-	
-	.row.match-my-cols [class*="col-"]{
-	    margin-bottom: -99999px;
-	    padding-bottom: 99999px;
-	}
-    
     /* Set gray background color and 100% height */
     .sidenav {
       background-color: #f1f1f1;
-      height: 450px;
+      height: 740px;
     }
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -89,43 +81,62 @@
 			<form>
 			  <div class="form-group">
 			    <label for="eventCreator">Creator:</label>
-			    <input type="userID" class="form-control" id="userID">
+			    <input type="userID" class="form-control" id="userID" placeholder="First name, Last name">
+			  </div>
+			  
+			   <div class="form-group">
+			    <label for="eventNamer">Event:</label>
+			    <input type="eventName" class="form-control" id="eventName" placeholder="Name of Event">
+			  </div>
+			  
+			  <div class="form-group">
+			  	<label for="eventVisibility">Event Visibility:</label><br> 
+			  	<div class="radio">
+				  <label><input type="radio" name="optradio">Public</label>
+				</div>
+				<div class="radio">
+				  <label><input type="radio" name="optradio">Private</label>
+				</div>
 			  </div>
 			  
 			  <div class="form-group">
 			    <label for="location">Location:</label>
-			    <input type="location" class="form-control" id="location">
+			    <input type="location" class="form-control" id="location" placeholder="">
 			  </div>
+			  
+			  <!-- IMPLEMENT DATEPICKER-->
 			  
 			  <div class="form-group">
 			    <label for="time">Time:</label>
-			    <input type="time" class="form-control" id="time">
+			    <input type="time" class="form-control" id="time" placeholder="">
 			  </div>
 			  
 			  <div class="form-group">
-			    <label for="time">Description:</label>
-			    <input type="time" class="form-control" id="time">
+			    <label for="description">Description:</label>
+			    <textarea class="form-control" rows="5" id="description" placeholder="Add Event Description..."></textarea>
 			  </div>
 			  
-			  <div class="container">
-			  <div class="dropdown">
-			    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
-			    <span class="caret"></span></button>
-			    <ul class="dropdown-menu">
-			      <li class="dropdown-header">Category 1</li>
-			      <li><a href="#">Type A</a></li>
-			      <li><a href="#">Type B</a></li>
-			      <li><a href="#">Type C</a></li>
-			      <li class="divider"></li>
-			      <li class="dropdown-header">Category 2</li>
-			      <li><a href="#">Type A</a></li>
-			      <li><a href="#">Type B</a></li>
-			    </ul>
+			  <!-- Use checkboxes instead of drop down?-->
+			  <div class="form-group">
+			  	<label for="categories">Categories:</label>
+				  <div class="dropdown">
+				    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
+				    <span class="caret"></span></button>
+				    <ul class="dropdown-menu">
+				      <li class="dropdown-header">Category 1</li>
+				      <li><a href="#">Type A</a></li>
+				      <li><a href="#">Type B</a></li>
+				      <li><a href="#">Type C</a></li>
+				      <li class="divider"></li>
+				      <li class="dropdown-header">Category 2</li>
+				      <li><a href="#">Type A</a></li>
+				      <li><a href="#">Type B</a></li>
+				    </ul>
+				  </div>
 			  </div>
-			</div>
 			
 			   <br>
-			   <button type="submit" class="btn btn-default">Submit</button>
+			   <button type="submit" class="btn btn-primary">Submit</button>
 			</form>
 		</div>
 			
@@ -137,5 +148,6 @@
 		
 		</div>
 	</body>
+	<script src="src/js/angular-datepicker.js"></script> 
  	<script src="/js/PairedController.js"></script>
 </html>
