@@ -41,11 +41,18 @@
 		
 		<p>{{name2}}</p>
 		
-		<div class="col-sm-offset-2 col-sm-10" ng-controller="dbCtrl">
+		<div class="col-sm-offset-2 col-sm-10">
 			<button id="btn-id" type="button" class="btn btn-primary" ng-click="displayusers()">Get All Customers</button>
 			<ul>
 	        	<li ng-repeat="user in data">{{user.name + " -- " + user.id}}</li>
+	        	<p>{{name2}}</p>
 	    	</ul>
+		</div>
+		<div class="col-sm-offset-2 col-sm-10">
+			<button id="btn-id" type="button" class="btn btn-primary" ng-click="testconnection()">Get All Customers</button>
+		</div>
+		<div class="col-sm-offset-2 col-sm-10">
+			<button id="btn-id" type="button" class="btn btn-primary" ng-click="displayusers()">Get All Customers</button>
 		</div>
 		
 		<table>

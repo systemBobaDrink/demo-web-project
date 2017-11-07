@@ -16,15 +16,31 @@ app.controller('dbCtrl', function ($scope, $http) {
 	}
 	
 	$scope.displayusers=function(){
+		//$scope.name2="tocuhed";
 		$http.get("/php/select.php")
 		.then(function(data){
-			$scope.name2="bbbb";
+			$scope.name2="in displayusers function";
 			$scope.data=data;
 			
 		}, function error(response){
+			//$scope.name2="errrorrr";
 			$scope.postResultMessage = "Error with status: " +  response.statusText;
 		});
 	}
+	
+	$scope.testconnection=function(){
+		$http.get("http://localhost:8080/php/connector.php")
+		.then(function(response){
+//			$scope.name2="in testconnection function";
+//			$scope.data=data;
+			$scope.name2=response.data;
+			
+		}, function error(response){
+			//$scope.name2="errrorrr";
+			$scope.postResultMessage = "Error with status: " +  response.statusText;
+		});
+	}
+	
 	
 });
 

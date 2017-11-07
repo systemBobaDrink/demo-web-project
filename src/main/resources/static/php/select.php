@@ -1,5 +1,5 @@
 <?php
-include "connection.php";
+include "/connector.php";
 $query="SELECT * FROM users";
 $rs=$dbhandle->query($query);
 

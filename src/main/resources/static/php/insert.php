@@ -1,5 +1,6 @@
 <?php
-include "/connection.php";
+include "/connector.php";
+$scope.name2="in insert";
 
 $data=json_decode(file_get_contents("php://uinput"));
 $id=$dbhandle->real_escape_string($data->id);
