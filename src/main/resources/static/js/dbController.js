@@ -1,9 +1,14 @@
 var app = angular.module('app', []);
 
 
-app.controller('dbCtrl', function ($scope, $http) {
+app.controller('dbCtrl', function ($scope, $http, $location) {
 	
 	$scope.name2="aa test";
+	$scope.curUrl=$location.absUrl();
+	$scope.port=$location.port();
+	$scope.protocol = $location.protocol();
+	$scope.host = $location.host();
+	$scope.fullUrl = $scope.protocol + "://" + $scope.host + ":" + $scope.port;
 	
 	$scope.insertdata=function(){
 		$http.post("/php/insert.php", {'id':$scope.id, 'name':$scope.name})
@@ -17,7 +22,7 @@ app.controller('dbCtrl', function ($scope, $http) {
 	
 	$scope.displayusers=function(){
 		//$scope.name2="tocuhed";
-		$http.get("/php/select.php")
+		$http.get($scope.fullUrl + "/php/select.php")
 		.then(function(data){
 			$scope.name2="in displayusers function";
 			$scope.data=data;
@@ -29,7 +34,8 @@ app.controller('dbCtrl', function ($scope, $http) {
 	}
 	
 	$scope.testconnection=function(){
-		$http.get("http://localhost:8080/php/connector.php")
+//		$scope.curUrl=$location.absUrl().origin;
+		$http.get($scope.fullUrl + "/php/connector.php")
 		.then(function(response){
 //			$scope.name2="in testconnection function";
 //			$scope.data=data;
