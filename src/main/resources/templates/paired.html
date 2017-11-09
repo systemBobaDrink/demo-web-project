@@ -42,7 +42,7 @@ footer {
 
 <body>
 	<div data-ng-app="pairedApp" data-ng-controller="pairedController">
-
+<div > {{1 +3}} </div>
 		<!-- Navigation Bar -->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
@@ -56,9 +56,9 @@ footer {
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="#">Home</a></li>
+						<li><a href="/test/">Home</a></li>
 						<li><a href="#">Live Events</a></li>
-						<li><a href="#">Search Events</a></li>
+						<li><a href="/eventTest/">Search Events</a></li>
 						<li><a href="#">My Events</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -80,21 +80,21 @@ footer {
 
 			<!-- Wrapper for Slides -->
 			<div class="carousel-inner" role="listbox">
-				<div class="item active">
+				<div class="item active carousel-item">
 					<img src="/images/calpoly.jpg"></img>
 					<div class="carousel-caption">
 						<h3>California State Polytechnic University Pomona</h3>
 					</div>
 				</div>
 
-				<div class="item">
+				<div class="item carousel-item">
 					<img src="/images/bric.jpg"></img>
 					<div class="carousel-caption">
 						<h3>Bronco Recreation and Intramural Complex</h3>
 					</div>
 				</div>
 
-				<div class="item">
+				<div class="item carousel-item">
 					<img src="/images/japanesegarden.jpg"></img>
 					<div class="carousel-caption">
 						<h3>Japanese Gardens</h3>
@@ -113,7 +113,7 @@ footer {
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
-
+ 
 		<!-- Display Event Elements -->
 		<div class="container text-center">
 			<h3>Discover Your Passion</h3>
