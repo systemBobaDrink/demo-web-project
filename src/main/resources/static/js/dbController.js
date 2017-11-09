@@ -25,7 +25,7 @@ app.controller('dbCtrl', function ($scope, $http, $location) {
 		$http.get($scope.fullUrl + "/php/select.php")
 		.then(function(data){
 			$scope.name2="in displayusers function";
-			$scope.data=data;
+			$scope.data=data.data;
 			
 		}, function error(response){
 			//$scope.name2="errrorrr";
