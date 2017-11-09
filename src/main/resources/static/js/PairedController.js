@@ -1,11 +1,12 @@
 var app = angular.module('pairedApp', []);
 app.controller('pairedController', function($scope) {
-    $scope.firstName = "bill";
-    $scope.lastName = "Doe";
+     $scope.imageSources = 'images/bric.jpg';
+     
 });
 
 app.controller('pairedEventController', function($scope) {
     $scope.event = "Dia de Los Muertos";
+   
 });
 
 app.controller('pairedCreateEventController', function($scope) {
