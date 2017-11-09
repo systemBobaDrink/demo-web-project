@@ -161,3 +161,323 @@
 	<script src="src/js/angular-datepicker.js"></script> 
  	<script src="/js/PairedController.js"></script>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Paired Create Event Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <style>
+    /* Format navbar */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 10px;
+    }
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 740px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+
+<body>
+	<div ng-app="pairedApp" ng-controller="pairedController">
+		
+		<!-- Navigation Bar -->
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>                        
+		      </button>
+		      <a class="navbar-brand"></a>
+		    </div>
+		    <div class="collapse navbar-collapse" id="myNavbar">
+		      <ul class="nav navbar-nav">
+		        <li><a href="#">Home</a></li>
+		        <li><a href="#">Live Events</a></li>
+		        <li><a href="#">Search Events</a></li>
+		        <li><a href="#">My Events</a></li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+		
+		<!-- Sidebar -->
+		<div class="container-fluid">
+		  <div class="row content">
+		    <div class="col-sm-3 sidenav">
+		    </div>
+		  </div>
+		</div>
+		
+		<div ng-app="pairedApp" ng-controller="pairedCreateEventController">
+		<div class="col-sm-9">
+			<div class="container text-center">    
+		  		<h3>Create an Event</h3>
+		  	</div>
+
+			<form>
+			  <div class="form-group">
+			    <label for="eventCreator">Creator:</label>
+			    <input type="userID" class="form-control" id="userID" placeholder="First name, Last name">
+			  </div>
+			  
+			   <div class="form-group">
+			    <label for="eventNamer">Event:</label>
+			    <input type="eventName" class="form-control" id="eventName" placeholder="Name of Event">
+			  </div>
+			  
+			  <div class="form-group">
+			  	<label for="eventVisibility">Event Visibility:</label><br> 
+			  	<div class="radio">
+				  <label><input type="radio" name="optradio">Public</label>
+				</div>
+				<div class="radio">
+				  <label><input type="radio" name="optradio">Private</label>
+				</div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="location">Location:</label>
+			    <input type="location" class="form-control" id="location" placeholder="">
+			  </div>
+			  
+			  <!-- IMPLEMENT DATEPICKER-->
+			  <div class="form-group">
+			  	<label for="location">Date:</label>
+				    <div flex-gt-xs>
+				      <h4>Standard date-picker</h4>
+				      <md-datepicker ng-model="dateChoose.myDate" md-placeholder="Enter date"></md-datepicker>
+				    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="time">Time:</label>
+			    <input type="time" class="form-control" id="time" placeholder="">
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="description">Description:</label>
+			    <textarea class="form-control" rows="5" id="description" placeholder="Add Event Description..."></textarea>
+			  </div>
+			  
+			  <!-- Use checkboxes instead of drop down?-->
+			  <div class="form-group">
+			  	<label for="categories">Categories:</label>
+				  <div class="dropdown">
+				    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
+				    <span class="caret"></span></button>
+				    <ul class="dropdown-menu">
+				      <li class="dropdown-header">Category 1</li>
+				      <li><a href="#">Type A</a></li>
+				      <li><a href="#">Type B</a></li>
+				      <li><a href="#">Type C</a></li>
+				      <li class="divider"></li>
+				      <li class="dropdown-header">Category 2</li>
+				      <li><a href="#">Type A</a></li>
+				      <li><a href="#">Type B</a></li>
+				    </ul>
+				  </div>
+			  </div>
+			
+			   <br>
+			   <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+			
+		<footer class="container-fluid text-center">
+		  <hr>
+		  <p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480 Fall 2017</p>
+		  <img src="images/paired.png" style="width:40px;">
+		</footer>
+		
+		</div>
+	</body>
+ 	<script src="/js/PairedController.js"></script>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Paired Create Event Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <style>
+    /* Format navbar */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 10px;
+    }
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 740px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+
+<body>
+	<div ng-app="pairedApp" ng-controller="pairedController">
+		
+		<!-- Navigation Bar -->
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>                        
+		      </button>
+		      <a class="navbar-brand"></a>
+		    </div>
+		    <div class="collapse navbar-collapse" id="myNavbar">
+		      <ul class="nav navbar-nav">
+		        <li><a href="#">Home</a></li>
+		        <li><a href="#">Live Events</a></li>
+		        <li><a href="#">Search Events</a></li>
+		        <li><a href="#">My Events</a></li>
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+		
+		<!-- Sidebar -->
+		<div class="container-fluid">
+		  <div class="row content">
+		    <div class="col-sm-3 sidenav">
+		    </div>
+		  </div>
+		</div>
+		
+		<div ng-app="pairedApp" ng-controller="pairedCreateEventController">
+		<div class="col-sm-9">
+			<div class="container text-center">    
+		  		<h3>Create an Event</h3>
+		  	</div>
+
+			<form>
+			  <div class="form-group">
+			    <label for="eventCreator">Creator:</label>
+			    <input type="userID" class="form-control" id="userID" placeholder="First name, Last name">
+			  </div>
+			  
+			   <div class="form-group">
+			    <label for="eventNamer">Event:</label>
+			    <input type="eventName" class="form-control" id="eventName" placeholder="Name of Event">
+			  </div>
+			  
+			  <div class="form-group">
+			  	<label for="eventVisibility">Event Visibility:</label><br> 
+			  	<div class="radio">
+				  <label><input type="radio" name="optradio">Public</label>
+				</div>
+				<div class="radio">
+				  <label><input type="radio" name="optradio">Private</label>
+				</div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="location">Location:</label>
+			    <input type="location" class="form-control" id="location" placeholder="">
+			  </div>
+			  
+			  <!-- IMPLEMENT DATEPICKER-->
+			  <div class="form-group">
+			  	<label for="location">Date:</label>
+				    <div flex-gt-xs>
+				      <h4>Standard date-picker</h4>
+				      <md-datepicker ng-model="dateChoose.myDate" md-placeholder="Enter date"></md-datepicker>
+				    </div>
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="time">Time:</label>
+			    <input type="time" class="form-control" id="time" placeholder="">
+			  </div>
+			  
+			  <div class="form-group">
+			    <label for="description">Description:</label>
+			    <textarea class="form-control" rows="5" id="description" placeholder="Add Event Description..."></textarea>
+			  </div>
+			  
+			  <!-- Use checkboxes instead of drop down?-->
+			  <div class="form-group">
+			  	<label for="categories">Categories:</label>
+				  <div class="dropdown">
+				    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Categories
+				    <span class="caret"></span></button>
+				    <ul class="dropdown-menu">
+				      <li class="dropdown-header">Category 1</li>
+				      <li><a href="#">Type A</a></li>
+				      <li><a href="#">Type B</a></li>
+				      <li><a href="#">Type C</a></li>
+				      <li class="divider"></li>
+				      <li class="dropdown-header">Category 2</li>
+				      <li><a href="#">Type A</a></li>
+				      <li><a href="#">Type B</a></li>
+				    </ul>
+				  </div>
+			  </div>
+			
+			   <br>
+			   <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+			
+		<footer class="container-fluid text-center">
+		  <hr>
+		  <p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480 Fall 2017</p>
+		  <img src="images/paired.png" style="width:40px;">
+		</footer>
+		
+		</div>
+	</body>
+ 	<script src="/js/PairedController.js"></script>
+</html>

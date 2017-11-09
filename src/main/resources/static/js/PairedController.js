@@ -11,12 +11,7 @@ app.controller('pairedEventController', function($scope) {
 
 app.controller('pairedCreateEventController', function($scope) {
 	$scope.eventName = "Name of Event";
-	$scope.categories = ["Art", "Rock Climbing", "Studying", "Tennis", "Tutoring"];
-	$scope.dateChoose = function() { 
-		this.myDate = new Date();
-  		this.isOpen = false;
-  	}
-	
+	$scope.categories = ["Art", "Rock Climbing", "Studying", "Tennis", "Tutoring"];	
 });
 
 app.controller('pairedYourEventsController', function($scope) {
