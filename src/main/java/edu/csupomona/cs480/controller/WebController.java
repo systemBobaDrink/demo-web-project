@@ -25,6 +25,6 @@ public class WebController {
     }
 	@RequestMapping(value="/testDB/",method = RequestMethod.GET)
     public String dbTestPage(){
-        return "dbTest";
+        return "jdbcTest";
     }
 }

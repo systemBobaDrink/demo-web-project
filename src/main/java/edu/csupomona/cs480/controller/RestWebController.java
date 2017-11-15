@@ -274,11 +274,11 @@ public class RestWebController {
 		return util.returnAll();
 	}
 	
-	@RequestMapping(value = "/sqlAddUser/", method = RequestMethod.GET)
+	@RequestMapping(value = "/sqlAddUser/", method = RequestMethod.POST)
 	void addUser(
 			@RequestParam("firstName") String firstName,
-			@RequestParam("lastName") String lastName,
-			@RequestParam(value = "major", required = false) String major) {
+			@RequestParam(value = "lastName") String lastName,
+			@RequestParam(value = "major", required = false) String major){
 		
 		
 		JDBCUtil util = new JDBCUtil();
