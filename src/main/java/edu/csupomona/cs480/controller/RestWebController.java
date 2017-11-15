@@ -31,6 +31,7 @@ import com.google.maps.model.GeocodingResult;
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.UserManager;
+import edu.csupomona.cs480.util.JDBCUtil;
 
 import java.sql.*;
 
@@ -241,14 +242,18 @@ public class RestWebController {
 	String testConnection() {
 		String returnThis = "Testing\n";
 		try {
+			returnThis += "Past Try";
+			
 			//Get a connection to database
-			Connection myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?useSSL=false", "root", "SystemBobaDrink321");
+			Connection myCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/users", "root", "SystemBobaDrink321");
+			returnThis += "Past Conn";
 			
 			//Create a statement
 			Statement myState = myCon.createStatement();
+			returnThis += "Past state";
 			
 			//Execute SQL Query
-			ResultSet myRs = myState.executeQuery("select * from users");
+			ResultSet myRs = myState.executeQuery("select * from userstable");
 			
 			//Process the Results
 			while (myRs.next()) {
@@ -258,8 +263,25 @@ public class RestWebController {
 			
 		}
 		catch (Exception e) {
-
+			returnThis += e.getCause();
 		}
 		return returnThis;
+	}
+	
+	@RequestMapping(value = "/cs480/sqlTest2", method = RequestMethod.GET)
+	String testJDBC2() {
+		JDBCUtil util = new JDBCUtil();
+		return util.returnAll();
+	}
+	
+	@RequestMapping(value = "/sqlAddUser/", method = RequestMethod.POST)
+	void addUser(
+			@RequestParam("firstName") String firstName,
+			@RequestParam(value = "lastName") String lastName,
+			@RequestParam(value = "major", required = false) String major){
+		
+		
+		JDBCUtil util = new JDBCUtil();
+		util.addUser(firstName, lastName);
 	}
 }

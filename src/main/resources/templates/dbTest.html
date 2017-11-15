@@ -16,7 +16,7 @@
 
 	<h3 style="color:blue">Http Angularjs With SpringBoot Example</h3>
 	
-	<div ng-controller="dbCtrl">
+	<div ng-controller="jdbcCntrl">
 		<form class="form-horizontal" name="customerForm">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="name">Name:</label>
@@ -40,25 +40,25 @@
 		</form>
 		
 		<p>{{name2}}</p>
-		<p>{{curUrl}}</p>
-		<p>{{port}}</p>
-		<p>{{protocol}}</p>
-		<p>{{host}}</p>
-		<p>{{fullUrl}}</p>
+<!-- 		<p>{{curUrl}}</p> -->
+<!-- 		<p>{{port}}</p> -->
+<!-- 		<p>{{protocol}}</p> -->
+<!-- 		<p>{{host}}</p> -->
+<!-- 		<p>{{fullUrl}}</p> -->
 		
-		<div class="col-sm-offset-2 col-sm-10">
-			<button id="btn-id" type="button" class="btn btn-primary" ng-click="displayusers()">displayusers() + ngrepeat</button>
-			<ul>
-	        	<li ng-repeat="user in data">{{user.name + " -- " + user.id}}</li>
-	        	<p>{{name2}}</p>
-	    	</ul>
-		</div>
+<!-- 		<div class="col-sm-offset-2 col-sm-10"> -->
+<!-- 			<button id="btn-id" type="button" class="btn btn-primary" ng-click="displayusers()">displayusers() + ngrepeat</button> -->
+<!-- 			<ul> -->
+<!-- 	        	<li ng-repeat="user in data">{{user.name + " - " + user.id}}</li> -->
+<!-- 	        	<p>{{name2}}</p> -->
+<!-- 	    	</ul> -->
+<!-- 		</div> -->
 		<div class="col-sm-offset-2 col-sm-10">
 			<button id="btn-id" type="button" class="btn btn-primary" ng-click="testconnection()">test connection()</button>
 		</div>
-		<div class="col-sm-offset-2 col-sm-10">
-			<button id="btn-id" type="button" class="btn btn-primary" ng-click="displayusers()">displayusers()</button>
-		</div>
+<!-- 		<div class="col-sm-offset-2 col-sm-10"> -->
+<!-- 			<button id="btn-id" type="button" class="btn btn-primary" ng-click="displayusers()">displayusers()</button> -->
+<!-- 		</div> -->
 		
 		<table>
 			<thead>
@@ -76,6 +76,25 @@
 			</tbody>
 		
 		</table>
+		
+		<div>
+            <label>Add User</label>
+            <table border="1">
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Major</td>
+                    <td>Add</td>
+                </tr>
+                <tr>
+                    <td><input type="text" data-ng-model="firstName"></input></td>
+                    <td><input type="text" data-ng-model="lastName"></input></td>
+                    <td><input type="text" data-ng-model="new_major"></input></td>
+                    <td><button data-ng-click="addUser()">Add</button></td>
+                </tr>
+            </table>
+        </div>
+		
 
 	</div>
 	

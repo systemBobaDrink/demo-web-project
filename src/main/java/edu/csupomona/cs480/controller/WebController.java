@@ -23,5 +23,8 @@ public class WebController {
     public String createEventPage(){
         return "pairedCreateEvent";
     }
-	
+	@RequestMapping(value="/testDB/",method = RequestMethod.GET)
+    public String dbTestPage(){
+        return "jdbcTest";
+    }
 }
