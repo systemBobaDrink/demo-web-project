@@ -16,9 +16,9 @@ $scope.getUser = function() {
 	  	});
 }
 
-$scope.addUser = function() {
-	  $http.post("cs480/user/" + $scope.new_id + "?name=" + $scope.new_name + "&major=" + $scope.new_major)
-	  	.success(function(data){
-	  		$scope.loadUsers();
-	  	});
-}
+//$scope.addUser = function() {
+//	  $http.post("cs480/user/" + $scope.new_id + "?name=" + $scope.new_name + "&major=" + $scope.new_major)
+//	  	.success(function(data){
+//	  		$scope.loadUsers();
+//	  	});
+//}
