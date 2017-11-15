@@ -2,22 +2,20 @@ var app = angular.module('pairedApp', []);
 app.controller('pairedController', function($scope) {
   
    $scope.carouselImages = [
-  {source: "/images/bric.jpg", title:"bric"} ,
-  {source:  "/images/calpoly.jpg", title: "cal poly"}  ];
+  {source: "/images/calpoly.jpg", title:"Cal Poly Pomona"} ,
+  {source:  "/images/bric.jpg", title: "BRIC"},
+  {source: "/images/japanesegarden.jpg", title: "Japanese Garden"},
+  {source: "/images/lylecenter.jpg", title: "Lyle Center"  }];
   
    $scope.displayEventImages = [
-  {source: "/images/bric.jpg", title:"bric1"} ,
-  {source:  "/images/calpoly.jpg", title: "cal poly1"} ,
-  {source: "/images/bric.jpg", title:"bric2"} ,
-  {source:  "/images/calpoly.jpg", title: "cal poly2"}, 
-   {source: "/images/bric.jpg", title:"bric3"} ,
-  {source:  "/images/calpoly.jpg", title: "cal poly3"} ,
-  {source: "/images/bric.jpg", title:"bric4"} ,
-  {source:  "/images/calpoly.jpg", title: "cal poly4"},
-   {source: "/images/bric.jpg", title:"bric5"} ,
-  {source:  "/images/calpoly.jpg", title: "cal poly5"} ,
-  {source: "/images/bric.jpg", title:"bric5"} ,
-  {source:  "/images/calpoly.jpg", title: "cal poly5"} ];
+  {source: "/images/calpoly.jpg", title:"Cal Poly Pomona"} ,
+  {source:  "/images/bric.jpg", title: "BRIC"},
+  {source: "/images/japanesegarden.jpg", title: "Japanese Garden"},
+  {source: "/images/lylecenter.jpg", title: "Lyle Center"  },
+  {source: "/images/calpoly.jpg", title:"Cal Poly Pomona1"} ,
+  {source:  "/images/bric.jpg", title: "BRIC1"},
+  {source: "/images/japanesegarden.jpg", title: "Japanese Garden1"},
+  {source: "/images/lylecenter.jpg", title: "Lyle Center1"  } ];
   
    
 });
