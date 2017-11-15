@@ -1,4 +1,4 @@
-var app = angular.module('app', []);
+var app = angular.module('appDeprecated', []);
 
 
 app.controller('dbCtrl', function ($scope, $http, $location) {

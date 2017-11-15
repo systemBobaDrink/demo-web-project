@@ -80,7 +80,7 @@ public class JDBCUtil {
 		
 	}
 	
-	public void AddUser(String firstName, String lastName) {
+	public void addUser(String firstName, String lastName) {
 		java.sql.Statement statement;
 		
 		try {
