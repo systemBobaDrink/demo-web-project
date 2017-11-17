@@ -2,20 +2,19 @@ var app = angular.module('pairedApp', []);
 app.controller('pairedController', function($scope) {
   
    $scope.carouselImages = [
-  {source: "/images/calpoly.jpg", title:"Cal Poly Pomona"} ,
-  {source:  "/images/bric.jpg", title: "BRIC"},
-  {source: "/images/japanesegarden.jpg", title: "Japanese Garden"},
-  {source: "/images/lylecenter.jpg", title: "Lyle Center"  }];
+  {source: "/images/calpoly.jpg", title:"Califorinia State Polytechnic University Pomona"} ,
+  {source:  "/images/bric.jpg", title: "Bronco Recreation and Intramural Complex"},
+  {source: "/images/japanesegarden.jpg", title: "George and Sakaye Aratani Japanese Garden"}];
   
    $scope.displayEventImages = [
-  {source: "/images/calpoly.jpg", title:"Cal Poly Pomona"} ,
+  {source: "/images/calpoly.jpg", title:"Cal Poly Pomona"},
   {source:  "/images/bric.jpg", title: "BRIC"},
   {source: "/images/japanesegarden.jpg", title: "Japanese Garden"},
   {source: "/images/lylecenter.jpg", title: "Lyle Center"  },
-  {source: "/images/calpoly.jpg", title:"Cal Poly Pomona1"} ,
+  {source: "/images/calpoly.jpg", title:"Cal Poly Pomona1"},
   {source:  "/images/bric.jpg", title: "BRIC1"},
   {source: "/images/japanesegarden.jpg", title: "Japanese Garden1"},
-  {source: "/images/lylecenter.jpg", title: "Lyle Center1"  } ];
+  {source: "/images/lylecenter.jpg", title: "Lyle Center1"} ];
   
    
 });
