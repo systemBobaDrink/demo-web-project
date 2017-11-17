@@ -61,7 +61,7 @@ public class JDBCUtil {
 		
 		try {
 			statement = conn.createStatement();
-			String sql = "SELECT * FROM users";
+			String sql = "SELECT * FROM `basicDB`.`users`";
 			ResultSet rs = statement.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -99,4 +99,35 @@ public class JDBCUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	public String getUserByID(String id) {
+		//Returns the information of the user with the specified ID.
+		
+		java.sql.Statement statement;
+		
+		String ret = "";
+		
+		
+		try {
+			statement = conn.createStatement();
+			String sql = "SELECT * FROM `basicDB`.`users` WHERE id= " + id + ";";
+			ResultSet rs = statement.executeQuery(sql);
+			
+			while(rs.next()) {
+				ret += "ID: " + rs.getInt("id");
+				ret += ", firstName: " + rs.getString("firstName");
+				ret += ", lastName: " + rs.getString("lastName");
+			}		
+			rs.close();
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return ret;
+		
+	}
+	
+	//DELETE FROM `basicDB`.`users` WHERE `id`='5';
 }

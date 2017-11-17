@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class WebController {
 	@RequestMapping(value="/home/",method = RequestMethod.GET)
     public String homePage(){
-        return "paired";
-        
+        return "paired";   
     }
 	@RequestMapping(value="/events/",method = RequestMethod.GET)
     public String eventPage(){

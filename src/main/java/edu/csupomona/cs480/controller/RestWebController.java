@@ -11,6 +11,7 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;
 
+import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -34,6 +35,8 @@ import edu.csupomona.cs480.data.provider.UserManager;
 import edu.csupomona.cs480.util.JDBCUtil;
 
 import java.sql.*;
+
+
 
 
 
@@ -284,4 +287,18 @@ public class RestWebController {
 		JDBCUtil util = new JDBCUtil();
 		util.addUser(firstName, lastName);
 	}
+	
+	@RequestMapping(value = "/sqlGetUserByID/", method = RequestMethod.GET)
+	String getUserID( @RequestParam("id") String id) {
+		String returnThis = "";
+		
+		JDBCUtil util = new JDBCUtil();
+		returnThis = util.getUserByID(id);
+		System.out.println(returnThis);
+		
+		JSONObject json = new JSONObject();
+		
+		return returnThis;
+	}
+	
 }

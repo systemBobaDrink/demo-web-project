@@ -2,13 +2,24 @@ var app = angular.module('app', []);
 
 app.controller('jdbcCntrl', function ($scope, $http) {
 	
+	$scope.testInput = "To be replaced";
 	$scope.myData = 0;
+	$scope.getByID = "Data goes here";
 	
 	$scope.addUser = function() {
 		$http.post("/sqlAddUser/" + "?firstName=" + $scope.firstName + "&lastName=" + $scope.lastName)
-		.then(function(data){
-			$scope.myData = data;
+		.then(function(response){
+			$scope.myData = response.data;
 			console.log($scope.myData);
+		});
+	}
+	
+	$scope.getUserID = function() {
+		$http.get("/sqlGetUserByID/" + "?id=" + $scope.id)
+		.then(function(response){
+			$scope.testInput = "asdasdasdasd";
+//			$scope.firstName = response;
+			console.log($scope.firstName);
 		});
 	}
 
@@ -16,9 +27,11 @@ app.controller('jdbcCntrl', function ($scope, $http) {
 	$scope.getUser = function() {
 		$http.get("cs480/user/" + $scope.userIdToSearch)
 	  	.then(function(data){
-	  		$scope.founduser = data;
+	  		$scope.getByID = data;
 	  	});
 	}
+	
+	
 });
 
 
