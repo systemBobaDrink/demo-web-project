@@ -16,11 +16,13 @@ app.controller('jdbcCntrl', function ($scope, $http) {
 	
 	$scope.getUserID = function() {
 		$http.get("/sqlGetUserByID/" + "?id=" + $scope.id)
-		.then(function(response){
+		.then(function mySuccess(response){
 			$scope.testInput = "asdasdasdasd";
 //			$scope.firstName = response;
 			console.log($scope.firstName);
-		});
+		}, function myError(response){
+			$scope.testInput = response.data;
+		});	
 	}
 
 

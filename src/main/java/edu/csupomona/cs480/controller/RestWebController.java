@@ -11,6 +11,7 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -289,16 +290,26 @@ public class RestWebController {
 	}
 	
 	@RequestMapping(value = "/sqlGetUserByID/", method = RequestMethod.GET)
-	String getUserID( @RequestParam("id") String id) {
+	public String getUserID( @RequestParam("id") String id) {
 		String returnThis = "";
 		
 		JDBCUtil util = new JDBCUtil();
 		returnThis = util.getUserByID(id);
 		System.out.println(returnThis);
 		
-		JSONObject json = new JSONObject();
+//		JSONObject json = new JSONObject();
 		
+//		try {
+//			json = new JSONObject("{\"firstName\":\"Alex\",\"lastName\":\"Ooly\"}");
+//			System.out.println("Json now: " + json);
+//
+//		} catch (JSONException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println("Json after: " + json);
 		return returnThis;
+		
 	}
 	
 }
