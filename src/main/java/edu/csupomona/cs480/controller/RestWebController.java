@@ -130,18 +130,18 @@ public class RestWebController {
 	 * @param major
 	 * @return
 	 */
-	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
-	User updateUser(
-			@PathVariable("userId") String id,
-			@RequestParam("name") String name,
-			@RequestParam(value = "major", required = false) String major) {
-		User user = new User();
-		user.setId(id);
-		user.setMajor(major);
-		user.setName(name);
-		userManager.updateUser(user);
-		return user;
-	}
+//	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
+//	User updateUser(
+//			@PathVariable("userId") String id,
+//			@RequestParam("name") String name,
+//			@RequestParam(value = "major", required = false) String major) {
+//		User user = new User();
+//		user.setId(id);
+//		user.setMajor(major);
+//		user.setName(name);
+//		userManager.updateUser(user);
+//		return user;
+//	}
 
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.
@@ -290,25 +290,16 @@ public class RestWebController {
 	}
 	
 	@RequestMapping(value = "/sqlGetUserByID/", method = RequestMethod.GET)
-	public String getUserID( @RequestParam("id") String id) {
+	public User getUserID( @RequestParam("id") String id) {
 		String returnThis = "";
 		
 		JDBCUtil util = new JDBCUtil();
-		returnThis = util.getUserByID(id);
-		System.out.println(returnThis);
 		
-//		JSONObject json = new JSONObject();
+		User user = new User();
+		user = util.getUserByID(id);
+		System.out.println(user.toString());
 		
-//		try {
-//			json = new JSONObject("{\"firstName\":\"Alex\",\"lastName\":\"Ooly\"}");
-//			System.out.println("Json now: " + json);
-//
-//		} catch (JSONException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println("Json after: " + json);
-		return returnThis;
+		return user;
 		
 	}
 	

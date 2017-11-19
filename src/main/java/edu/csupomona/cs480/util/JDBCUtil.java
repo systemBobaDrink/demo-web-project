@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import com.mysql.cj.api.jdbc.Statement;
 
+import edu.csupomona.cs480.data.User;
+
 public class JDBCUtil {
 	final static String DATABASE = "users";
 	final static String SERVER   = "mydatabase.ckoxrzfooypv.us-east-2.rds.amazonaws.com"; //RDS dns 
@@ -100,12 +102,14 @@ public class JDBCUtil {
 		}
 	}
 	
-	public String getUserByID(String id) {
+	public User getUserByID(String id) {
 		//Returns the information of the user with the specified ID.
 		
 		java.sql.Statement statement;
 		
 		String ret = "";
+		
+		User user = new User();
 		
 		
 		try {
@@ -114,9 +118,11 @@ public class JDBCUtil {
 			ResultSet rs = statement.executeQuery(sql);
 			
 			while(rs.next()) {
-				ret += "ID: " + rs.getInt("id");
-				ret += ", firstName: " + rs.getString("firstName");
-				ret += ", lastName: " + rs.getString("lastName");
+				Integer myInt = rs.getInt("id");
+				user.setId(myInt.toString());
+				user.setFirstName(rs.getString("firstName"));
+				user.setLastName(rs.getString("lastName"));
+				System.out.println("end of while loop");
 			}		
 			rs.close();
 			statement.close();
@@ -125,7 +131,7 @@ public class JDBCUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ret;
+		return user;
 		
 	}
 	
