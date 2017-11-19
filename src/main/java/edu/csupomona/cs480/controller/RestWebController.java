@@ -139,7 +139,8 @@ public class RestWebController {
 //		user.setName(name);
 //		userManager.updateUser(user);
 //		return user;
-//	}
+//	} 
+// I commented this out because I edited the USER class and it messed this up. It's not really needed anyways though
 
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.
@@ -213,31 +214,6 @@ public class RestWebController {
 			e.printStackTrace();
 		}
 		return "Failed";
-	}
-	
-	//
-	@Autowired 
-	JdbcTemplate jt;
-
-	@RequestMapping(value = "/cs480/jdbcTestFindUser", method = RequestMethod.GET)
-	String findUser() {
-		//Deletes table if previously exists, creates new one afterwords.
-		jt.execute("DROP TABLE users IF EXISTS");
-	    jt.execute("CREATE TABLE users(id SERIAL, name VARCHAR(255), major VARCHAR(255))");
-	    
-	    //Dummy data for database
-	    jt.execute("INSERT INTO users (id, name, major) values (1, 'John Adams', 'Computer Science')");
-	    jt.execute("INSERT INTO users (id, name, major) values (2, 'Alex Cremmins', 'Engineer')");
-	    jt.execute("INSERT INTO users (id, name, major) values (3, 'Joseph Mendoza', 'Liberal Arts')");
-	    
-	    //Determines how the query will search
-	    String sql = "SELECT NAME FROM users WHERE id = ?";
-	    
-	    //Query search: Simply looks for the object with an id == 2
-	    String searching = (String)jt.queryForObject(sql, new Object[] { 2 }, String.class);
-	    
-	    //Returns the string of the object found
-	    return searching;
 	}
 	
 	@RequestMapping(value = "/cs480/sqlTest", method = RequestMethod.GET)
