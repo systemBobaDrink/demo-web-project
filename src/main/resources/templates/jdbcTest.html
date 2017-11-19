@@ -27,6 +27,34 @@
                     <td><input type="text" data-ng-model="new_major"></input></td>
                     <td><button data-ng-click="addUser()">Add</button></td>
                 </tr>
+                <tr>
+                    <td><input type="text" data-ng-model="id"></input></td>
+                    <td><button data-ng-click="getUserID()">Click to get User</button></td>
+                    <td>{{foundUser.firstName}}</td>
+                </tr>
+            </table>
+            {{foundUser.lastName}}
+            {{foundUser.id}}
+            <table border="1">
+                <tr>
+                    <td>eventName</td>
+                    <td>hostID</td>
+                    <td>Description</td>
+                    <td>Private (1 or 0)</td>
+                    <td>Location</td>
+                    <td>eventTime</td>
+                    <td>eventDate</td>
+                </tr>
+                <tr>
+                    <td><input type="text" data-ng-model="eventName"></input></td>
+                    <td><input type="text" data-ng-model="hostID"></input></td>
+                    <td><input type="text" data-ng-model="description"></input></td>
+                    <td><input type="text" data-ng-model="priv"></input></td>
+                    <td><input type="text" data-ng-model="location"></input></td>
+                    <td><input type="text" data-ng-model="eventTime"></input></td>
+                    <td><input type="text" data-ng-model="eventDate"></input></td>
+                    <td><button data-ng-click="addEvent()">Add</button></td>
+                </tr>
             </table>
         </div>
 		

@@ -11,11 +11,13 @@ public class User {
 	/** The unique user Id */
     private String id;
     /** The unique user Id */
-    private String name;
-    /** The unique user Id */
     private String major;
     /** The timestamp when the user is being created */
     private String creationTime = new Date(System.currentTimeMillis()).toString();
+    
+    private String firstName;
+    private String lastName;
+    
 
     public String getId() {
         return id;
@@ -24,14 +26,6 @@ public class User {
     public void setId(String id) {
         this.id = id;
     }
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getMajor() {
 		return major;
@@ -49,6 +43,20 @@ public class User {
 		this.creationTime = creationTime;
 	}
 	public String toString() {
-		return String.format("User[name='%s', major='%s', id='%s']", name, major, id);
+		return String.format("User[firstName='%s', lastName='%s', id='%s']", firstName, lastName, id);
+	}
+	
+	public String getFirstName() {
+		return this.firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	public String getLastName() {
+		return this.lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 }

@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import com.mysql.cj.api.jdbc.Statement;
 
+import edu.csupomona.cs480.data.User;
+
 public class JDBCUtil {
 	final static String DATABASE = "users";
 	final static String SERVER   = "mydatabase.ckoxrzfooypv.us-east-2.rds.amazonaws.com"; //RDS dns 
@@ -61,7 +63,7 @@ public class JDBCUtil {
 		
 		try {
 			statement = conn.createStatement();
-			String sql = "SELECT * FROM users";
+			String sql = "SELECT * FROM `basicDB`.`users`";
 			ResultSet rs = statement.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -93,6 +95,57 @@ public class JDBCUtil {
 			String sql = "INSERT INTO `basicDB`.`users` (`firstName`, `lastName`) VALUES ('" + firstName + "', '" + lastName + "');";			
 			statement.executeUpdate(sql);
 			
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public User getUserByID(String id) {
+		//Returns the information of the user with the specified ID.
+		
+		java.sql.Statement statement;
+		
+		String ret = "";
+		
+		User user = new User();
+		
+		
+		try {
+			statement = conn.createStatement();
+			String sql = "SELECT * FROM `basicDB`.`users` WHERE id= " + id + ";";
+			ResultSet rs = statement.executeQuery(sql);
+			
+			while(rs.next()) {
+				Integer myInt = rs.getInt("id");
+				user.setId(myInt.toString());
+				user.setFirstName(rs.getString("firstName"));
+				user.setLastName(rs.getString("lastName"));
+				System.out.println("end of while loop");
+			}		
+			rs.close();
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+		
+	}
+	
+	public void addEvent(String eventName, String hostID, String description, String priv, String location, String eventTime, String eventDate) {
+		//Used with the addEvent method found in RESTController.
+		//Used to insert events into the event table, with the above parameters.
+		
+		java.sql.Statement statement;
+		
+		try {
+			statement = conn.createStatement();
+			String sql = "INSERT INTO `basicDB`.`events` (`name`, `host`, `description`, `location`, `private`, `eventDate`, `eventTime`) VALUES "
+					   + "('" + eventName + "', '" + hostID + "', '" + description + "', '" + location + "', '" + priv + "', '" + eventDate + "', '" + eventTime + "');";			
+			statement.executeUpdate(sql);
 			statement.close();
 			conn.close();
 		} catch (SQLException e) {

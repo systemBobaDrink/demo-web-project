@@ -38,6 +38,8 @@ import java.sql.*;
 
 
 
+
+
 /**
  * This is the controller used by Spring framework.
  * <p>
@@ -126,18 +128,18 @@ public class RestWebController {
 	 * @param major
 	 * @return
 	 */
-	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
-	User updateUser(
-			@PathVariable("userId") String id,
-			@RequestParam("name") String name,
-			@RequestParam(value = "major", required = false) String major) {
-		User user = new User();
-		user.setId(id);
-		user.setMajor(major);
-		user.setName(name);
-		userManager.updateUser(user);
-		return user;
-	}
+//	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
+//	User updateUser(
+//			@PathVariable("userId") String id,
+//			@RequestParam("name") String name,
+//			@RequestParam(value = "major", required = false) String major) {
+//		User user = new User();
+//		user.setId(id);
+//		user.setMajor(major);
+//		user.setName(name);
+//		userManager.updateUser(user);
+//		return user;
+//	}
 
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.
@@ -284,4 +286,31 @@ public class RestWebController {
 		JDBCUtil util = new JDBCUtil();
 		util.addUser(firstName, lastName);
 	}
+	
+	@RequestMapping(value = "/sqlGetUserByID/", method = RequestMethod.GET)
+	public User getUserID( @RequestParam("id") String id) {		
+		JDBCUtil util = new JDBCUtil();
+		
+		User user = new User();
+		user = util.getUserByID(id);
+		System.out.println(user.toString());
+		
+		return user;
+		
+	}
+	
+	@RequestMapping(value = "/sqlAddEvent/", method = RequestMethod.POST)
+	void addEvent(
+			@RequestParam(value = "eventName") String eventName,
+			@RequestParam(value = "hostID") String hostID,
+			@RequestParam(value = "description", required = false) String description,
+			@RequestParam(value = "priv") String priv,
+			@RequestParam(value = "location", required = false) String location,
+			@RequestParam(value = "eventTime") String eventTime,
+			@RequestParam(value = "eventDate") String eventDate){
+		
+		JDBCUtil util = new JDBCUtil();
+		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate);
+	}
+	
 }
