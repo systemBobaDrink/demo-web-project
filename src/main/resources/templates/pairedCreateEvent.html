@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="/js/PairedController.js"></script>
   <link href="src/css/angular-datepicker.css" rel="stylesheet" type="text/css"></link>
   
   <!--  jQuery -->
@@ -117,9 +118,9 @@
 			    
 			    <!-- Form Contents -->
 				<div >
-					<div class="col-sm-9">
+					<div class="col-sm-9" >
 						<div class="text-center">
-					  		<h3>Create an Event</h3>
+					  		<h3>Create an Event {{createdEvent.eventVisability}} {{test}}</h3>
 					  	</div>
 			
 						<form  data-ng-submit="submitCreateEventForm()" role="form">
@@ -139,12 +140,13 @@
 						  	<label for="eventVisibility">Event Visibility:</label>
 						  	<div class="glyphicon glyphicon-question-sign" data-toggle="tooltip"></div>
 						  	<div class="radio">
-							  <label><input value ="public" type="radio" name="optradio" data-ng-model="createdEvent.eventVisibility">Public</input></label>
+							  <label><input data-ng-model="createdEvent.eventVisibility" data-ng-value ="'0'" type="radio" name="optradio" >Public</input></label>
 							</div>
 							<div class="radio">
-							  <label><input value ="private" type="radio" name="optradio" data-ng-model="createdEvent.eventVisibility">Private</input></label>
+							  <label><input data-ng-model="createdEvent.eventVisibility" data-ng-value ="'1'" type="radio" name="optradio" >Private</input></label>
 							</div>
 						  </div> <!-- End div for event Visibility  -->
+						  {{createdEvent.eventTime}}
 						  
 						  <div class="form-group">
 						  	<div class="glyphicon glyphicon-globe" data-toggle="tooltip"></div>
@@ -195,7 +197,7 @@
 						  <!-- End of Category Input -->
 						
 						   <br></br>
-					 <input type="submit" value="Save" class="btn btn-primary col-sm-offset-3" /> 
+					 <input type="submit" value="Save" data-ng-click="submitCreateEventForm()" class="btn btn-primary col-sm-offset-3" /> 
 					 <input type="reset" value="Reset" data-ng-click="resetForm()" class="btn" /> <br/>
 					</form>
 						
@@ -209,6 +211,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 	
 	</body>

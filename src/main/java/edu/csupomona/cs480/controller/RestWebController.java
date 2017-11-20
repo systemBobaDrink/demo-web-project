@@ -29,9 +29,12 @@ import com.google.maps.GeocodingApi;
 import com.google.maps.model.GeocodingResult;
 
 import edu.csupomona.cs480.App;
+import edu.csupomona.cs480.data.Events;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.UserManager;
 import edu.csupomona.cs480.util.JDBCUtil;
+
+import org.json.*;
 
 import java.sql.*;
 
@@ -284,9 +287,21 @@ public class RestWebController {
 			@RequestParam(value = "location", required = false) String location,
 			@RequestParam(value = "eventTime") String eventTime,
 			@RequestParam(value = "eventDate") String eventDate){
-		
+		System.out.println(priv);
+		System.out.println(eventTime);
+		System.out.println(eventDate);
+//		Integer myInt = priv;
 		JDBCUtil util = new JDBCUtil();
 		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate);
 	}
 	
+	@RequestMapping(value = "/sqlAddEvent2/", method = RequestMethod.POST)
+	void addEvent(
+			@RequestParam(value = "Event") Object event){
+		System.out.println(event.toString());
+		System.out.println("Did it work?? ^^??");
+		
+		JDBCUtil util = new JDBCUtil();
+//		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate);
+	}
 }

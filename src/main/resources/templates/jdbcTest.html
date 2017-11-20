@@ -13,10 +13,11 @@
 <body>
 	<div class="container" data-ng-app="app">
 		<div data-ng-controller="jdbcCntrl">
+			<div class="row content">
             <label>Add User</label>
             <table border="1">
                 <tr>
-                    <td>firstName</td>
+                    <td>{{testInput}}</td>
                     <td>lastName</td>
                     <td>Major</td>
                     <td>Add</td>
@@ -56,6 +57,7 @@
                     <td><button data-ng-click="addEvent()">Add</button></td>
                 </tr>
             </table>
+            </div>
         </div>
 		
 
