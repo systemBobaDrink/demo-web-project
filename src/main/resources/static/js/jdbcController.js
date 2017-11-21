@@ -40,5 +40,14 @@ app.controller('jdbcCntrl', function ($scope, $http) {
 			$scope.error = "Problem getting event from sql";
 		});
 	}
+	
+	$scope.getNumEvents = function(){
+		$http.get("/sqlGetEventNum/")
+		.then(function mySuccess(response){
+			$scope.testInput = response.data;
+		}, function myError(response){
+			$scope.error = "Problem getting Num of events.";
+		});
+	}
 });
 

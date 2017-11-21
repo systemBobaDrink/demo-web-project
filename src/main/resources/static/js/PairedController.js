@@ -47,6 +47,9 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 	$scope.submitCreateEventForm = function(){
 		// TODO: HTTP REQUEST 
 		// send $http request to save Event 
+		
+		$scope.test = container.data;
+		
 		$http.post("/sqlAddEvent/" + "?eventName=" + $scope.createdEvent.eventName + "&hostID=" + $scope.createdEvent.userID + "&description=" + $scope.createdEvent.eventDescription 
 				   + "&priv=" + $scope.createdEvent.eventVisibility + "&location=" + $scope.createdEvent.eventLocation + "&eventTime=" + $scope.createdEvent.eventTime + "&eventDate=" + $scope.createdEvent.eventDate)
 		.then(function(response){			   

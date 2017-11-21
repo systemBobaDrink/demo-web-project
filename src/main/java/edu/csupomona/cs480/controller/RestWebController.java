@@ -308,4 +308,14 @@ public class RestWebController {
 		
 //		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate);
 	}
+	
+	@RequestMapping(value = "/sqlGetEventNum/", method = RequestMethod.GET)
+	public String getNumberOfEvents() {
+		
+		JDBCUtil util = new JDBCUtil();
+		
+		String returnThis = util.getNumberOfEvents();
+		
+		return returnThis;
+	}
 }

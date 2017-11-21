@@ -183,6 +183,28 @@ public class JDBCUtil {
 				e.printStackTrace();
 		}
 			return event;
-	}
+	} 
 	
+	public String getNumberOfEvents() {
+		java.sql.Statement statement;
+		
+		Integer ret = -1;
+		try {
+			statement = conn.createStatement();
+			String sql = "SELECT COUNT(*) FROM basicDB.events;";
+			ResultSet rs = statement.executeQuery(sql);
+			
+			rs.next(); //Needed to bring cursor to first row in returned table.
+
+			ret = rs.getInt("COUNT(*)");
+			
+			rs.close();
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ret.toString();
+		
+	}
 }
