@@ -113,7 +113,7 @@
 		
 		<div class="container-fluid">
 			  <div class="row content">
-			 	 <!-- Sidebar -->
+			 	<!-- Sidebar -->
 			    <div class="col-sm-3 sidenav"></div>
 			    
 			    <!-- Form Contents -->
@@ -146,7 +146,6 @@
 							  <label><input data-ng-model="createdEvent.eventVisibility" data-ng-value ="'1'" type="radio" name="optradio" >Private</input></label>
 							</div>
 						  </div> <!-- End div for event Visibility  -->
-						  {{createdEvent.eventTime}}
 						  
 						  <div class="form-group">
 						  	<div class="glyphicon glyphicon-globe" data-toggle="tooltip"></div>
@@ -158,7 +157,7 @@
 						  <div class="form-group"> 
 						    <div class="glyphicon glyphicon-calendar" data-toggle="tooltip"></div>
 					        <label class="col-sm-3 control-label" for="date">Start Date: </label>
-					        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"  data-ng-model="createdEvent.eventDate" />
+					        <input class="form-control" id="datepicker" name="date" data-format="yyyy-MM-dd" placeholder="MM/DD/YYY" type="text"  data-ng-model="createdEvent.eventDate" />
 					      </div>
 					      <!-- End of Date Input -->
 						  
