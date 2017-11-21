@@ -1,13 +1,14 @@
 package edu.csupomona.cs480.data;
 
 public class Events {
+	private String eventID;
 	private String name;
 	private String hostID;
 	private String description;
 	private String location;
 	private String eventTime;
 	private String eventDate;
-	private boolean priv;
+	private String priv;
 	public String getName() {
 		return name;
 	}
@@ -50,11 +51,17 @@ public class Events {
 		this.eventDate = eventDate;
 	}
 
-	public boolean isPriv() {
+	public String getPriv() {
 		return priv;
 	}
-	public void setPriv(boolean priv) {
+	public void setPriv(String priv) {
 		this.priv = priv;
+	}
+	public String getEventID() {
+		return eventID;
+	}
+	public void setEventID(String eventID) {
+		this.eventID = eventID;
 	}
 	
 	

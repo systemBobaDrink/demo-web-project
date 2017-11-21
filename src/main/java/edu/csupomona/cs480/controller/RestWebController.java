@@ -295,13 +295,17 @@ public class RestWebController {
 		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate);
 	}
 	
-	@RequestMapping(value = "/sqlAddEvent2/", method = RequestMethod.POST)
-	void addEvent(
-			@RequestParam(value = "Event") Object event){
-		System.out.println(event.toString());
-		System.out.println("Did it work?? ^^??");
+	@RequestMapping(value = "/sqlGetEventByID/", method = RequestMethod.GET)
+	public Events getEventByID(
+			@RequestParam(value = "id") String id){
+		System.out.println(id);
 		
 		JDBCUtil util = new JDBCUtil();
+		Events event = new Events();
+		event = util.getEventByID(id);
+		
+		return event;
+		
 //		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate);
 	}
 }

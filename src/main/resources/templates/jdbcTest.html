@@ -33,6 +33,11 @@
                     <td><button data-ng-click="getUserID()">Click to get User</button></td>
                     <td>{{foundUser.firstName}}</td>
                 </tr>
+                <tr>
+                    <td><input type="text" data-ng-model="eventID"></input></td>
+                    <td><button data-ng-click="getEventByID()">Click to get Event</button></td>
+                    <td>{{foundEvent.name}}</td>
+                </tr>
             </table>
             {{foundUser.lastName}}
             {{foundUser.id}}

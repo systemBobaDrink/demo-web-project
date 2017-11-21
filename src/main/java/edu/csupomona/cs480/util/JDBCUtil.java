@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.mysql.cj.api.jdbc.Statement;
 
+import edu.csupomona.cs480.data.Events;
 import edu.csupomona.cs480.data.User;
 
 public class JDBCUtil {
@@ -106,9 +107,7 @@ public class JDBCUtil {
 		//Returns the information of the user with the specified ID.
 		
 		java.sql.Statement statement;
-		
-		String ret = "";
-		
+				
 		User user = new User();
 		
 		
@@ -152,4 +151,38 @@ public class JDBCUtil {
 			e.printStackTrace();
 		}
 	}
+
+	public Events getEventByID(String id) {
+		//Returns the information of the event with the specified ID.
+		
+		java.sql.Statement statement;
+		
+		Events event = new Events();
+		
+		try {
+			statement = conn.createStatement();
+			String sql = "SELECT * FROM `basicDB`.`events` WHERE id= " + id + ";";
+			ResultSet rs = statement.executeQuery(sql);
+			
+			while(rs.next()) {
+				Integer myInt = rs.getInt("id");
+				event.setEventID(myInt.toString());
+				event.setName(rs.getString("name"));
+				event.setHostID(rs.getString("host"));
+				event.setDescription(rs.getString("description"));
+				event.setLocation(rs.getString("location"));
+				event.setPriv(rs.getString("private"));
+				event.setEventDate(rs.getString("eventDate"));
+				event.setEventTime(rs.getString("eventTime"));
+			}
+			rs.close();
+			statement.close();
+			conn.close();
+			
+		}catch (SQLException e) {
+				e.printStackTrace();
+		}
+			return event;
+	}
+	
 }
