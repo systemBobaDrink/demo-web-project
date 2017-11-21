@@ -39,7 +39,7 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 			eventCategory: ''
 	};
 	$scope.test = "Please repalce";
-
+	
 	//4. copy originalStudent to student. student will be bind to a form 
 	$scope.createdEvent = angular.copy($scope.originalEvent);
 	
@@ -47,8 +47,8 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 	$scope.submitCreateEventForm = function(){
 		// TODO: HTTP REQUEST 
 		// send $http request to save Event 
-		
-		$scope.test = container.data;
+		$scope.createdEvent.eventTime = $('#time').val();
+		$scope.createdEvent.eventDate = $('#datepicker').val();
 		
 		$http.post("/sqlAddEvent/" + "?eventName=" + $scope.createdEvent.eventName + "&hostID=" + $scope.createdEvent.userID + "&description=" + $scope.createdEvent.eventDescription 
 				   + "&priv=" + $scope.createdEvent.eventVisibility + "&location=" + $scope.createdEvent.eventLocation + "&eventTime=" + $scope.createdEvent.eventTime + "&eventDate=" + $scope.createdEvent.eventDate)
@@ -57,7 +57,7 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 	}
 	
 	//6. create resetForm() function. This will be called on Reset button click.  
-	$scope.resetForm = function () {
+	$scope.resetForm = function () {		
 		$scope.createdEvent = angular.copy($scope.originalEvent);
 	}
 
