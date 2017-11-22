@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import com.mysql.cj.api.jdbc.Statement;
 
+import org.json.*;
+
 import edu.csupomona.cs480.data.Events;
 import edu.csupomona.cs480.data.User;
 
@@ -134,16 +136,16 @@ public class JDBCUtil {
 		
 	}
 	
-	public void addEvent(String eventName, String hostID, String description, String priv, String location, String eventTime, String eventDate) {
+	public void addEvent(String eventName, String hostID, String description, String priv, String location, String eventTime, String eventDate, String eventCategory) {
 		//Used with the addEvent method found in RESTController.
 		//Used to insert events into the event table, with the above parameters.
 		
 		java.sql.Statement statement;
-		
+		System.out.println(eventCategory);
 		try {
 			statement = conn.createStatement();
-			String sql = "INSERT INTO `basicDB`.`events` (`name`, `host`, `description`, `location`, `private`, `eventDate`, `eventTime`) VALUES "
-					   + "('" + eventName + "', '" + hostID + "', '" + description + "', '" + location + "', '" + priv + "', '" + eventDate + "', '" + eventTime + "');";			
+			String sql = "INSERT INTO `basicDB`.`events` (`name`, `host`, `description`, `location`, `private`, `eventDate`, `eventTime`, `category`) VALUES "
+					   + "('" + eventName + "', '" + hostID + "', '" + description + "', '" + location + "', '" + priv + "', '" + eventDate + "', '" + eventTime + "', '" + eventCategory + "');";			
 			statement.executeUpdate(sql);
 			statement.close();
 			conn.close();
@@ -174,6 +176,7 @@ public class JDBCUtil {
 				event.setPriv(rs.getString("private"));
 				event.setEventDate(rs.getString("eventDate"));
 				event.setEventTime(rs.getString("eventTime"));
+				event.setCategory(rs.getString("category"));
 			}
 			rs.close();
 			statement.close();
@@ -206,5 +209,79 @@ public class JDBCUtil {
 		}
 		return ret.toString();
 		
+	}
+	
+	public void addUserEventLink(String userID, String eventID) {
+		java.sql.Statement statement;
+		
+		try {
+			statement = conn.createStatement();
+			String sql = "INSERT INTO `basicDB`.`user_event_link` (`userID`, `eventID`) VALUES ('" + userID + "', '" + eventID +"');";
+			statement.executeUpdate(sql);
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+public JSONObject getEventsUserIsApartOf(String userID) {
+		//Returns the events a user is a part of.
+		java.sql.Statement statement;
+		
+		ResultSet rs = null;
+		JSONObject json = new JSONObject();
+		try {
+			statement = conn.createStatement();
+			String sql = "SELECT eventID FROM `basicDB`.`user_event_link` WHERE userID= " + userID + ";";
+			rs = statement.executeQuery(sql);
+			System.out.println(rs);
+
+			Integer counter = 1;
+			while(rs.next()) {
+				try {
+					json.put(counter.toString(), rs.getInt(1));
+				} catch(Exception e){
+					e.getMessage();
+				}
+				counter++;
+			}
+			rs.close();
+			statement.close();
+			conn.close();			
+		}catch (SQLException e) {
+				e.printStackTrace();
+		}
+		return json;
+	}
+
+	public JSONObject getUsersApartOfEvent(String eventID) {
+		//Returns the events a user is a part of.
+		java.sql.Statement statement;
+		
+		ResultSet rs = null;
+		JSONObject json = new JSONObject();
+		try {
+			statement = conn.createStatement();
+			String sql = "SELECT userID FROM `basicDB`.`user_event_link` WHERE eventID= " + eventID + ";";
+			rs = statement.executeQuery(sql);
+			System.out.println(rs);
+
+			Integer counter = 1;
+			while(rs.next()) {
+				try {
+					json.put(counter.toString(), rs.getInt(1));
+				} catch(Exception e){
+					e.getMessage();
+				}
+				counter++;
+			}
+			rs.close();
+			statement.close();
+			conn.close();			
+		}catch (SQLException e) {
+				e.printStackTrace();
+		}
+		return json;
 	}
 }

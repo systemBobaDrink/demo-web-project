@@ -9,6 +9,7 @@ public class Events {
 	private String eventTime;
 	private String eventDate;
 	private String priv;
+	private String category;
 	public String getName() {
 		return name;
 	}
@@ -62,6 +63,12 @@ public class Events {
 	}
 	public void setEventID(String eventID) {
 		this.eventID = eventID;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 	

@@ -49,5 +49,30 @@ app.controller('jdbcCntrl', function ($scope, $http) {
 			$scope.error = "Problem getting Num of events.";
 		});
 	}
+	
+	$scope.addUserEventLink = function(){
+		$http.post("/sqlAddUserEventLink/" + "?userID=" + $scope.userID + "&eventID=" + $scope.eventID)
+		.then(function(response){
+		});
+	}
+	
+	$scope.getEventsUserIsApartOf = function(){
+		$http.get("/sqlGetUserEventLinkUsers/" + "?userID=" + $scope.userID)
+		.then(function mySuccess(response){
+			$scope.testInput = response.data;
+		}, function myError(response){
+			$scope.error = "Problem getting all events user is a part of.";
+			$scope.testInput = response.data;
+		});
+	}
+	$scope.getUsersApartOfEvent = function(){
+		$http.get("/sqlGetUserEvenLinkEvents/" + "?eventID=" + $scope.eventID)
+		.then(function mySuccess(response){
+			$scope.testInput = response.data;
+		}, function myError(response){
+			$scope.error = "Problem getting all events user is a part of.";
+			$scope.testInput = response.data;
+		});
+	}
 });
 

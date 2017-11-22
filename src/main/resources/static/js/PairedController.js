@@ -49,10 +49,14 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 		// send $http request to save Event 
 		$scope.createdEvent.eventTime = $('#time').val();
 		$scope.createdEvent.eventDate = $('#datepicker').val();
+		$scope.test = $scope.createdEvent.eventCategory;
 		
 		$http.post("/sqlAddEvent/" + "?eventName=" + $scope.createdEvent.eventName + "&hostID=" + $scope.createdEvent.userID + "&description=" + $scope.createdEvent.eventDescription 
-				   + "&priv=" + $scope.createdEvent.eventVisibility + "&location=" + $scope.createdEvent.eventLocation + "&eventTime=" + $scope.createdEvent.eventTime + "&eventDate=" + $scope.createdEvent.eventDate)
+				   + "&priv=" + $scope.createdEvent.eventVisibility + "&location=" + $scope.createdEvent.eventLocation + "&eventTime=" + $scope.createdEvent.eventTime + "&eventDate=" + $scope.createdEvent.eventDate
+				   + "&eventCategory=" + $scope.createdEvent.eventCategory)
 		.then(function(response){			   
+		}, function myError(){
+			$scope.test = "Error thrown on post?";
 		});
 	}
 	

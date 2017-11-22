@@ -39,13 +39,25 @@
                     <td>{{foundEvent.name}}</td>
                 </tr>
                 <tr>
-                    <td><input type="text" data-ng-model="eventID"></input></td>
                     <td><button data-ng-click="getNumEvents()">Click to get num of Event</button></td>
                     <td>{{testInput}}</td>
                 </tr>
+                <tr>
+                    <td><input type="text" data-ng-model="userID"></input></td>
+                    <td><input type="text" data-ng-model="eventID"></input></td>
+                    <td><button data-ng-click="addUserEventLink()">Click to add UserEvent Link</button></td>
+                </tr>
+                <tr>
+                    <td><input type="text" data-ng-model="userID"></input></td>
+                    <td><button data-ng-click="getEventsUserIsApartOf()">Click to get Events user is a part of</button></td>
+                </tr>
+                <tr>
+                    <td><input type="text" data-ng-model="eventID"></input></td>
+                    <td><button data-ng-click="getUsersApartOfEvent()">Click to get Users a part of this event</button></td>
+                </tr>
             </table>
-            {{foundUser.lastName}}
-            {{foundUser.id}}
+            error: {{error}}
+            testinput: {{testInput}}
             <table border="1">
                 <tr>
                     <td>eventName</td>

@@ -167,7 +167,7 @@
 				<div >
 					<div class="col-sm-9" >
 						<div class="text-center">
-					  		<h3>Create an Event</h3>
+					  		<h3>Create an Event {{test}}</h3>
 					  	</div>
 					  	
 						<form id="submitCreateEventForm" data-ng-submit="submitCreateEventForm()" role="form">
@@ -235,6 +235,7 @@
 						  	 <select id = "category" class="form-control" data-ng-model="createdEvent.eventCategory">
 						  		 <option ng-repeat="option in categories" value="{{option}}">{{option}}</option>
 						  	 </select>
+
 						  </div>
 						  <!-- End div for Category Input -->
 						

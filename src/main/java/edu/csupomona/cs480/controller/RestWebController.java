@@ -286,13 +286,10 @@ public class RestWebController {
 			@RequestParam(value = "priv") String priv,
 			@RequestParam(value = "location", required = false) String location,
 			@RequestParam(value = "eventTime") String eventTime,
-			@RequestParam(value = "eventDate") String eventDate){
-		System.out.println(priv);
-		System.out.println(eventTime);
-		System.out.println(eventDate);
-//		Integer myInt = priv;
+			@RequestParam(value = "eventDate") String eventDate,
+			@RequestParam(value = "eventCategory") String eventCategory){
 		JDBCUtil util = new JDBCUtil();
-		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate);
+		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate, eventCategory);
 	}
 	
 	@RequestMapping(value = "/sqlGetEventByID/", method = RequestMethod.GET)
@@ -308,7 +305,7 @@ public class RestWebController {
 		
 //		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate);
 	}
-	
+
 	@RequestMapping(value = "/sqlGetEventNum/", method = RequestMethod.GET)
 	public String getNumberOfEvents() {
 		
@@ -318,4 +315,33 @@ public class RestWebController {
 		
 		return returnThis;
 	}
+	
+	@RequestMapping(value="/sqlAddUserEventLink/", method = RequestMethod.POST)
+	void addUserEventLink(
+
+		@RequestParam(value = "userID") String userID,
+		@RequestParam(value = "eventID") String eventID){
+			System.out.println(userID + eventID);
+			JDBCUtil util = new JDBCUtil();
+			util.addUserEventLink(userID, eventID);
+	}
+	
+	@RequestMapping(value = "/sqlGetUserEventLinkUsers/", method = RequestMethod.GET)
+	public String getEventsUserIsApartOf(
+			@RequestParam(value = "userID") String userID) {
+		JDBCUtil util = new JDBCUtil();
+		JSONObject rs = util.getEventsUserIsApartOf(userID);
+		
+		return rs.toString();
+	}
+	
+	@RequestMapping(value = "/sqlGetUserEvenLinkEvents/", method = RequestMethod.GET)
+	public String getUsersApartOfEvent(
+			@RequestParam(value = "eventID") String eventID) {
+		JDBCUtil util = new JDBCUtil();
+		JSONObject rs = util.getUsersApartOfEvent(eventID);
+		
+		return rs.toString();
+	}
+		
 }
