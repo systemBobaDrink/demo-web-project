@@ -69,6 +69,32 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 
 
 
-app.controller('pairedYourEventsController', function($scope) {
-	$scope.event = "none";
+app.controller('pairedYourEventsController', function($scope, $http) {
+	
+	
+	 $scope.getEventByID = function(eventID){
+
+			$http.get("/sqlGetEventByID/" + "?id="	+ eventID )
+			.then(function mySuccess(response){
+				$scope.foundEvent = response.data;
+			}, function myError(response){
+				$scope.error = "Problem getting event from sql";
+			});
+		}
+	
+	$scope.getNumEvents = function(){
+		$http.get("/sqlGetEventNum/")
+		.then(function mySuccess(response){
+			$scope.testInput = response.data;
+		}, function myError(response){
+			$scope.error = "Problem getting Num of events.";
+		});
+	}
+	
+	$scope.range = function(min, max, step){
+	    step = step || 1;
+	    var input = [];
+	    for (var i = min; i <= max; i += step) input.push(i);
+	    return input;
+	  };
 });

@@ -4,14 +4,10 @@
 <title>Paired Your Events Page</title>
 <meta charset="utf-8"></meta>
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <style>
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {
@@ -48,16 +44,21 @@ footer {
 </head>
 
 <body>
-	<div data-ng-app="pairedApp" data-ng-controller="pairedController">
-
+	<div data-ng-app="pairedApp" data-ng-controller="pairedYourEventsController">
+		<div ng-init="val= getNumEvents()" ></div>
+		{{testInput }} TEST INPUT 
+	
+		<li  ng-repeat="n in range(1,testInput)">test {{n}}
+			<div ng-init="getEventByID(n)"> <li>{{foundEvent}}</li></div>
+		
+		</li>
+		
 		<!-- Navigation Bar -->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#myNavbar">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand"></a>
 				</div>
@@ -69,8 +70,7 @@ footer {
 						<li><a href="/yourEvent/">My Events</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
-								Login</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</ul>
 				</div>
 			</div>
@@ -96,54 +96,44 @@ footer {
 				<div class="col-sm-9">
 					<h2>Event1 Title</h2>
 					<h5>
-						<span class="glyphicon glyphicon-time"></span> Event hosted by
-						Username, TIMEDATE.
+						<span class="glyphicon glyphicon-time"></span> Event hosted by Username, TIMEDATE.
 					</h5>
 					<h5>
-						<span class="label label-danger">Category1</span> <span
-							class="label label-primary">Category2</span>
+						<span class="label label-danger">Category1</span> <span class="label label-primary">Category2</span>
 					</h5>
 					<br></br>
-					<p>EVENT DESCRIPTION: Lorem ipsum dolor sit amet, consectetur
-						adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-						exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Excepteur sint occaecat cupidatat non proident, sunt in
-						culpa qui officia deserunt mollit anim id est laborum consectetur
-						adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-						exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat.</p>
+					<p>EVENT DESCRIPTION: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+						nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+						occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+						consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+						aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+						ea commodo consequat.</p>
 					<br></br>
 
 					<hr></hr>
 					<h2>Event2 Title</h2>
 					<h5>
-						<span class="glyphicon glyphicon-time"></span> Event hosted by
-						Username, TIMEDATE.
+						<span class="glyphicon glyphicon-time"></span> Event hosted by Username, TIMEDATE.
 					</h5>
 					<h5>
 						<span class="label label-success">Category3</span>
 					</h5>
 					<br></br>
-					<p>EVENT DESCRIPTION: Lorem ipsum dolor sit amet, consectetur
-						adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-						exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Excepteur sint occaecat cupidatat non proident, sunt in
-						culpa qui officia deserunt mollit anim id est laborum consectetur
-						adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-						exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat.</p>
+					<p>EVENT DESCRIPTION: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+						nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
+						occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+						consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+						aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+						ea commodo consequat.</p>
 					<br></br>
 				</div>
 			</div>
 
 			<footer class="container-fluid text-center">
 				<hr></hr>
-				<p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480
-					Fall 2017</p>
+				<p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480 Fall 2017</p>
 				<img src="/images/paired.png" style="width: 40px;"></img>
 			</footer>
 		</div>
