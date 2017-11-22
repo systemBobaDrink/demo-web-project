@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.mysql.cj.api.jdbc.Statement;
 
@@ -225,7 +226,7 @@ public class JDBCUtil {
 		}
 	}
 	
-public JSONObject getEventsUserIsApartOf(String userID) {
+	public JSONObject getEventsUserIsApartOf(String userID) {
 		//Returns the events a user is a part of.
 		java.sql.Statement statement;
 		
@@ -283,5 +284,42 @@ public JSONObject getEventsUserIsApartOf(String userID) {
 				e.printStackTrace();
 		}
 		return json;
+	}
+
+	public ArrayList<Events> getAllEvents() {
+		java.sql.Statement statement;
+
+		Events event = new Events();
+		ArrayList<Events> myList = new ArrayList<Events>();
+		
+		try {
+			statement = conn.createStatement();
+			String sql = "SELECT * FROM basicDB.events;";
+			ResultSet rs = statement.executeQuery(sql);
+
+			while(rs.next()) {
+				event = new Events();
+				Integer myInt = rs.getInt("id");
+				event.setEventID(myInt.toString());
+				event.setName(rs.getString("name"));
+				event.setHostID(rs.getString("host"));
+				event.setDescription(rs.getString("description"));
+				event.setLocation(rs.getString("location"));
+				event.setPriv(rs.getString("private"));
+				event.setEventDate(rs.getString("eventDate"));
+				event.setEventTime(rs.getString("eventTime"));
+				event.setCategory(rs.getString("category"));
+				
+				myList.add(event);
+			}
+			
+			rs.close();
+			statement.close();
+			conn.close();	
+		} catch (SQLException e) {
+				e.printStackTrace();
+		}
+		
+		return myList;
 	}
 }

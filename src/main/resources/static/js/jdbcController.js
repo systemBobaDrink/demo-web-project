@@ -74,5 +74,15 @@ app.controller('jdbcCntrl', function ($scope, $http) {
 			$scope.testInput = response.data;
 		});
 	}
+	
+	$scope.getAllEvents = function(){
+		$http.get("/sqlGetAllEvents/")
+		.then(function mySuccess(response){
+			$scope.testInput = response.data;
+		}, function myError(response){
+			$scope.error = "Problem getting all events.";
+			$scope.testInput = response.data;
+		})
+	}
 });
 

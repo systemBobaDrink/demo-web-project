@@ -1,6 +1,7 @@
 package edu.csupomona.cs480.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.collect.HashBasedTable;
@@ -342,6 +343,15 @@ public class RestWebController {
 		JSONObject rs = util.getUsersApartOfEvent(eventID);
 		
 		return rs.toString();
+	}
+	
+	@RequestMapping(value = "/sqlGetAllEvents/", method = RequestMethod.GET)
+	public ArrayList<Events> getAllEvents() {
+		JDBCUtil util = new JDBCUtil();
+		
+		ArrayList<Events> returnThis = util.getAllEvents();
+
+		return returnThis;
 	}
 		
 }

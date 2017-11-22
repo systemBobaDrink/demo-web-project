@@ -10,6 +10,19 @@ public class Events {
 	private String eventDate;
 	private String priv;
 	private String category;
+	
+	public void reset() {
+		this.eventID = "";
+		this.name = "";
+		this.hostID = "";
+		this.description = "";
+		this.location = "";
+		this.eventTime = "";
+		this.eventDate = "";
+		this.priv = "";
+		this.category = "";
+	}
+	
 	public String getName() {
 		return name;
 	}
