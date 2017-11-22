@@ -20,7 +20,7 @@ app.controller('pairedController', function($scope) {
 });
 
 app.controller('pairedEventController', function($scope) {
-	$scope.event = "Dia de Los Muertos";
+	$scope.dis;
 
 });
 

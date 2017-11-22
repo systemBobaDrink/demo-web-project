@@ -98,14 +98,14 @@
 	
 					<!-- General Event -->
 					<div class="col-sm-9">
-						<h2>Event Title</h2>
+						<h2>{{eventTitle}}</h2>
 						<img src="/images/bric.jpg" class="img-fluid" alt="Responsive image" />
 
 						<h3>
-							<span class="glyphicon glyphicon-time"></span> Event hosted by Username.
+							<span class="glyphicon glyphicon-time"></span> Event hosted by {{username}}.
 						</h3>
-						<h5>WHEN: DateTime</h5>
-						<h5>WHERE: Location</h5>
+						<h5>WHEN: {{dateTime}}</h5>
+						<h5>WHERE: {{location}}</h5>
 						<br></br>
 	
 						<p>EVENT DESCRIPTION: Lorem ipsum dolor sit amet, consectetur
@@ -117,9 +117,10 @@
 							adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 							dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
 							exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat.</p>
+							consequat. {{eventDescription}}
+						</p>
 							
-						<button type="button" class="btn btn-primary">Attend</button>
+						<button type="button" class="btn btn-primary" id="butt_userAttend">Attend</button>
 					</div>	
 					<hr />
 					

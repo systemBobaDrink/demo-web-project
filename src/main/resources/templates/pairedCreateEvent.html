@@ -35,7 +35,7 @@
       date_input.datepicker(options);
 
 	    $('input.timepicker').timepicker({
-	        timeFormat: 'HH:mm',
+	        timeFormat: 'h:mm p',
 	        // year, month, day and seconds are not important
 	        minTime: new Date(0, 0, 0, 0, 0, 0),
 	        maxTime: new Date(0, 0, 0, 23, 0, 0),
@@ -48,6 +48,40 @@
 	        startTime: new Date(0, 0, 0, 0, 0, 0),
 	        // items in the dropdown are separated by at interval minutes
 	        interval: 60
+	    });
+	    
+	    $('#submitCreateEventForm').formValidation({
+	        framework: 'bootstrap',
+	        icon: {
+	            valid: 'glyphicon glyphicon-ok',
+	            invalid: 'glyphicon glyphicon-remove',
+	            validating: 'glyphicon glyphicon-refresh'
+	        },
+	        fields: {
+	            username: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The username is required'
+	                    },
+	                    stringLength: {
+	                        min: 6,
+	                        max: 30,
+	                        message: 'The username must be more than 6 and less than 30 characters long'
+	                    },
+	                    regexp: {
+	                        regexp: /^[a-zA-Z]+$/,
+	                        message: 'The username can only consist of alphabetical characters.'
+	                    }
+	                }
+	            },
+	            eventname: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The event name is required'
+	                    }
+	                }
+	            }
+	        }
 	    });
 	});
   </script>
@@ -78,6 +112,18 @@
       }
       .row.content {height: auto;} 
     }
+    
+    #submitCreateEventForm .has-error .control-label,
+	#submitCreateEventForm .has-error .help-block,
+	#submitCreateEventForm .has-error .form-control-feedback {
+	    color: #f39c12;
+	}
+	
+	#submitCreateEventForm .has-success .control-label,
+	#submitCreateEventForm .has-success .help-block,
+	#submitCreateEventForm .has-success .form-control-feedback {
+	    color: #18bc9c;
+	}
   </style>
 </head>
 
@@ -109,8 +155,9 @@
 				</div>
 			</div>
 		</nav>
+		<!-- End of Nav Bar -->
 		
-		
+		<!-- Create Event Form -->
 		<div class="container-fluid">
 			  <div class="row content">
 			 	<!-- Sidebar -->
@@ -122,94 +169,93 @@
 						<div class="text-center">
 					  		<h3>Create an Event</h3>
 					  	</div>
-			
-						<form  data-ng-submit="submitCreateEventForm()" role="form">
+					  	
+						<form id="submitCreateEventForm" data-ng-submit="submitCreateEventForm()" role="form">
 						  <div class="form-group">
-						 	 <div class="glyphicon glyphicon-user" data-toggle="tooltip"></div>
-						 	 <label for="eventCreator" class="col-sm-3 control-label">Creator:</label>
-						 	 <input type="userID" class="form-control" id="userID" placeholder="First name Last name" data-ng-model="createdEvent.userID"></input>
-						  </div> <!-- End div for event creator  -->
+						 	 <a href="#" class="glyphicon glyphicon-user" data-toggle="tooltip"></a>
+						 	 <label for="eventCreator" class="control-label">Creator:</label>
+						 	 <input type="text" class="form-control" id="userID" name="username" placeholder="First name Last name" data-ng-model="createdEvent.userID"></input>
+						  </div> 
+						  <!-- End div for event creator  -->
 						  
 						   <div class="form-group">
-						   <div  class="glyphicon glyphicon-pushpin" data-toggle="tooltip"></div> 
-						    <label for="eventNamer" class="col-sm-3 control-label">Event:</label>
-						    <input type="eventName" class="form-control" id="eventName" placeholder="Name of Event" data-ng-model="createdEvent.eventName"></input>
-						  </div> <!-- End div for event Name  -->
+							    <a href="#" class="glyphicon glyphicon-pushpin" data-toggle="tooltip"></a> 
+							    <label for="eventNamer" class="control-label">Event:</label>
+							    <input type="text" class="form-control" id="eventName" name="eventname" placeholder="Name of Event" data-ng-model="createdEvent.eventName"></input>
+						   </div> 
+						   <!-- End div for event Name  -->
 						  
 						  <div class="form-group">
 						  	<label for="eventVisibility">Event Visibility:</label>
-						  	<div class="glyphicon glyphicon-question-sign" data-toggle="tooltip"></div>
-						  	<div class="radio">
+						  	<a href="#" class="glyphicon glyphicon-question-sign" data-toggle="tooltip"></a>
+						  <div class="radio">
 							  <label><input data-ng-model="createdEvent.eventVisibility" data-ng-value ="'0'" type="radio" name="optradio" >Public</input></label>
 							</div>
 							<div class="radio">
 							  <label><input data-ng-model="createdEvent.eventVisibility" data-ng-value ="'1'" type="radio" name="optradio" >Private</input></label>
 							</div>
-						  </div> <!-- End div for event Visibility  -->
+						  </div> 
+						  <!-- End div for event Visibility  -->
 						  
 						  <div class="form-group">
-						  	<div class="glyphicon glyphicon-globe" data-toggle="tooltip"></div>
-						    <label for="location" class="col-sm-3 control-label">Location:</label>
-						    <input type="location" class="form-control" id="location" placeholder="Enter Address of event" data-ng-model="createdEvent.eventLocation"></input>
-						  </div> <!-- End div for event Location  -->
+						  	<a href="#" class="glyphicon glyphicon-globe" data-toggle="tooltip"></a>
+						    <label for="location" class="control-label">Location:</label>
+						    <input type="location" class="form-control" id="location" placeholder="Address of event" data-ng-model="createdEvent.eventLocation"></input>
+						  </div> 
+						  <!-- End div for event Location  -->
 						  
 						  <!-- Date Input -->
 						  <div class="form-group"> 
-						    <div class="glyphicon glyphicon-calendar" data-toggle="tooltip"></div>
-					        <label class="col-sm-3 control-label" for="date">Start Date: </label>
+						    <a href="#" class="glyphicon glyphicon-calendar" data-toggle="tooltip"></a>
+					        <label class="control-label" for="date">Start Date: </label>
 					        <input class="form-control" id="datepicker" name="date" data-format="yyyy-MM-dd" placeholder="MM/DD/YYY" type="text"  data-ng-model="createdEvent.eventDate" />
 					      </div>
 					      <!-- End of Date Input -->
 						  
 						  <!-- Time Input -->
 						  <div class="form-group">
-						  	<div class="glyphicon glyphicon-time" data-toggle="tooltip"></div>
-							  <label for="time" class="col-sm-3 control-label">Start Time:</label>
-							  <input   id ="time" type="text" class="timepicker" name="time" data-ng-model="createdEvent.eventTime" />
+						  	<a href="#" class="glyphicon glyphicon-time" data-toggle="tooltip"></a>
+							  <label for="time" class="control-label">Start Time:</label>
+							  <input   id ="time" type="text" class="timepicker list-group-item" name="time" data-ng-model="createdEvent.eventTime" />
 						  </div>
 						  <!-- End of Time Input -->
 											
 						  <!-- Description Input -->					  
 						  <div class="form-group">
-						  	<div  class="glyphicon glyphicon-pencil" data-toggle="tooltip"></div>
-						    <label for="description" class="col-sm-3 control-label">Description:</label>
+						  	<a href="#" class="glyphicon glyphicon-pencil" data-toggle="tooltip"></a>
+						    <label for="description" class="control-label">Description:</label>
 						    <textarea class="form-control" rows="5" id="description" placeholder="Add Event Description..." data-ng-model="createdEvent.eventDescription"></textarea>
 						  </div>
 						  <!-- End of Description Input -->	
 						  
 						  <!-- Category Input -->
 						  <div class="form-group">
-						  <div class="glyphicon glyphicon-list" data-toggle="tooltip"></div>
-						  	<label for="categories" class="col-sm-3 control-label">Categories:</label>
-						  	<div class ="col-sm-2">
+						  	 <a href="#" class="glyphicon glyphicon-list" data-toggle="tooltip"></a>
+						  	 <label for="categories" class="control-label">Categories:</label>
 						  	 <select id = "category" class="form-control" data-ng-model="createdEvent.eventCategory">
-						  		 <option ng-repeat="option in categories" value="{{categories}}">{{option}}</option>
-						  	</select>
-						  		<!-- <select id = "category" class="form-control" data-ng-model="createdEvent.eventCategory">
-						  		ToDo: Make this dynamically populating 
-						  			<option value="category1">category1</option>
-						  		 	<option value="category2">category2</option>
-						  		</select> -->
-						  	</div>
+						  		 <option ng-repeat="option in categories" value="{{option}}">{{option}}</option>
+						  	 </select>
 						  </div>
-						  
-						  <!-- End of Category Input -->
+						  <!-- End div for Category Input -->
 						
-						   <br></br>
+					 <br></br>
+					 <!-- Submit Button -->
 					 <input type="submit" value="Save" class="btn btn-primary col-sm-offset-3" /> 
 					 <input type="reset" value="Reset" data-ng-click="resetForm()" class="btn" /> <br/>
-					</form>
+					 <!-- End of Submit Button -->
+				</form>
 						
-						<footer class="container-fluid text-center">
-						  <hr></hr>
-						  <p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480 Fall 2017</p>
-						  <img src="/images/paired.png" style="width:40px;"></img>
-						</footer>
+				<footer class="container-fluid text-center">
+				  <hr></hr>
+				  <p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480 Fall 2017</p>
+				  <img src="/images/paired.png" style="width:40px;"></img>
+				</footer>
 					
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- End of Create Event Form -->
 		
 	</div>
 	
