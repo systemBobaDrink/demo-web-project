@@ -39,10 +39,10 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 			eventCategory: ''
 	};
 	$scope.test = "Please repalce";
-	
+
 	//4. copy originalStudent to student. student will be bind to a form 
 	$scope.createdEvent = angular.copy($scope.originalEvent);
-	
+
 	//5. create submitStudentForm() function. This will be called when user submits the form
 	$scope.submitCreateEventForm = function(){
 		// TODO: HTTP REQUEST 
@@ -50,16 +50,16 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 		$scope.createdEvent.eventTime = $('#time').val();
 		$scope.createdEvent.eventDate = $('#datepicker').val();
 		$scope.test = $scope.createdEvent.eventCategory;
-		
+
 		$http.post("/sqlAddEvent/" + "?eventName=" + $scope.createdEvent.eventName + "&hostID=" + $scope.createdEvent.userID + "&description=" + $scope.createdEvent.eventDescription 
-				   + "&priv=" + $scope.createdEvent.eventVisibility + "&location=" + $scope.createdEvent.eventLocation + "&eventTime=" + $scope.createdEvent.eventTime + "&eventDate=" + $scope.createdEvent.eventDate
-				   + "&eventCategory=" + $scope.createdEvent.eventCategory)
-		.then(function(response){			   
-		}, function myError(){
-			$scope.test = "Error thrown on post?";
-		});
+				+ "&priv=" + $scope.createdEvent.eventVisibility + "&location=" + $scope.createdEvent.eventLocation + "&eventTime=" + $scope.createdEvent.eventTime + "&eventDate=" + $scope.createdEvent.eventDate
+				+ "&eventCategory=" + $scope.createdEvent.eventCategory)
+				.then(function(response){			   
+				}, function myError(){
+					$scope.test = "Error thrown on post?";
+				});
 	}
-	
+
 	//6. create resetForm() function. This will be called on Reset button click.  
 	$scope.resetForm = function () {		
 		$scope.createdEvent = angular.copy($scope.originalEvent);
@@ -70,31 +70,14 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 
 
 app.controller('pairedYourEventsController', function($scope, $http) {
-	
-	
-	 $scope.getEventByID = function(eventID){
-
-			$http.get("/sqlGetEventByID/" + "?id="	+ eventID )
-			.then(function mySuccess(response){
-				$scope.foundEvent = response.data;
-			}, function myError(response){
-				$scope.error = "Problem getting event from sql";
-			});
-		}
-	
-	$scope.getNumEvents = function(){
-		$http.get("/sqlGetEventNum/")
+	$scope.getAllEvents = function(){
+		$http.get("/sqlGetAllEvents/")
 		.then(function mySuccess(response){
 			$scope.testInput = response.data;
 		}, function myError(response){
-			$scope.error = "Problem getting Num of events.";
-		});
+			$scope.error = "Problem getting all events.";
+			$scope.testInput = response.data;
+		})
 	}
-	
-	$scope.range = function(min, max, step){
-	    step = step || 1;
-	    var input = [];
-	    for (var i = min; i <= max; i += step) input.push(i);
-	    return input;
-	  };
+
 });

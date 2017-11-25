@@ -45,14 +45,16 @@ footer {
 
 <body>
 	<div data-ng-app="pairedApp" data-ng-controller="pairedYourEventsController">
-		<div ng-init="val= getNumEvents()" ></div>
-		{{testInput }} TEST INPUT 
-	
-		<li  ng-repeat="n in range(1,testInput)">test {{n}}
-			<div ng-init="getEventByID(n)"> <li>{{foundEvent}}</li></div>
+		<!-- <button data-ng-click="">Click to get all Events</button> -->
+		<div  ng-init="getAllEvents()" ></div>
+		<div ng-repeat="event in testInput ">
+		{{event.eventID}} Event Name : {{event.name}}  
 		
-		</li>
+		<!-- NOTE THIS IS HOW YOU WOULD GET ALL THE EVENTS   -->
 		
+		
+		
+		</div>
 		<!-- Navigation Bar -->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
