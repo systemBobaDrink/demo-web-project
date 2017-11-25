@@ -46,15 +46,7 @@ footer {
 <body>
 	<div data-ng-app="pairedApp" data-ng-controller="pairedYourEventsController">
 		<!-- <button data-ng-click="">Click to get all Events</button> -->
-		<div  ng-init="getAllEvents()" ></div>
-		<div ng-repeat="event in testInput ">
-		{{event.eventID}} Event Name : {{event.name}}  
-		
-		<!-- NOTE THIS IS HOW YOU WOULD GET ALL THE EVENTS   -->
-		
-		
-		
-		</div>
+		<div></div>
 		<!-- Navigation Bar -->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
@@ -79,7 +71,7 @@ footer {
 		</nav>
 
 		<!-- Sidebar -->
-		<div class="container-fluid">
+		<div class="container-fluid" data-ng-init="getAllEvents()">
 			<div class="row content">
 				<div class="col-sm-3 sidenav">
 					<h4>Filter By:</h4>
@@ -96,41 +88,16 @@ footer {
 
 				<!-- Events -->
 				<div class="col-sm-9">
-					<h2>Event1 Title</h2>
-					<h5>
-						<span class="glyphicon glyphicon-time"></span> Event hosted by Username, TIMEDATE.
-					</h5>
-					<h5>
-						<span class="label label-danger">Category1</span> <span class="label label-primary">Category2</span>
-					</h5>
-					<br></br>
-					<p>EVENT DESCRIPTION: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-						nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-						occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-						consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-						aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-						ea commodo consequat.</p>
-					<br></br>
+					<div data-ng-repeat="event in testInput ">
+						{{event.eventID}} Event Name : {{event.name}}
 
-					<hr></hr>
-					<h2>Event2 Title</h2>
-					<h5>
-						<span class="glyphicon glyphicon-time"></span> Event hosted by Username, TIMEDATE.
-					</h5>
-					<h5>
-						<span class="label label-success">Category3</span>
-					</h5>
-					<br></br>
-					<p>EVENT DESCRIPTION: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-						nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-						occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-						consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-						aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-						ea commodo consequat.</p>
-					<br></br>
+						<!-- NOTE THIS IS HOW YOU WOULD GET ALL THE EVENTS   -->
+
+
+
+					</div>
 				</div>
+				<!-- End all events div  -->
 			</div>
 
 			<footer class="container-fluid text-center">
