@@ -68,14 +68,15 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 });
 
 app.controller('pairedYourEventsController', function($scope, $http) {
-	$scope.getAllEvents = function(){
-		$http.get("/sqlGetAllEvents/")
+	// TODO: Update this function to the user using email address 
+	$scope.getEventsUserIsApartOf = function(){
+		$http.get("/sqlGetUserEventLinkUsers/" + "?userID=" + $scope.userID)
 		.then(function mySuccess(response){
 			$scope.testInput = response.data;
 		}, function myError(response){
-			$scope.error = "Problem getting all events.";
+			$scope.error = "Problem getting all events user is a part of.";
 			$scope.testInput = response.data;
-		})
+		});
 	}
 
 });
