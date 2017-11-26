@@ -275,6 +275,13 @@ public class JDBCUtil {
 				myIntList.add(rs.getInt(1));
 			}
 			
+			if(myIntList.size() == 0) {			//Used to cut out of this method early if no user/event links exist.
+				Events descEvent = new Events();
+				descEvent.setDescription("You don't have any events.");	//This event will be used specifically just to display this message.
+				myEventList.add(descEvent);
+				return myEventList;
+			}
+			
 			sql = "SELECT * FROM basicDB.events WHERE id IN('";
 			
 			for(int i = 0; i < myIntList.size(); i++) {

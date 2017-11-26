@@ -70,6 +70,12 @@ app.controller('jdbcCntrl', function ($scope, $http) {
 		$http.get("/sqlGetEventsUserIsApartOfReturnObject/" + "?userID=" + $scope.userID)
 		.then(function mySuccess(response){
 			$scope.testInput = response.data;
+			
+//			if(1 == 1)
+//				$scope.testInput = $scope.testInput[0].description;
+			
+			if($scope.testInput[0].description == "You don't have any events.")
+				$scope.testInput = "You don't have any events.";
 		}, function myError(response){
 			$scope.error = "Problem getting all events user is a part of.";
 			$scope.testInput = response.data;
