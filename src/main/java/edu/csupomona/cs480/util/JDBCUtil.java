@@ -255,6 +255,64 @@ public class JDBCUtil {
 		}
 		return json;
 	}
+	public ArrayList<Events> getEventsUserIsApartOfReturnObject(String userID) {
+		//Returns the events a user is a part of.
+		java.sql.Statement statement;
+		
+		Events event = new Events();
+		ArrayList<Events> myEventList = new ArrayList<Events>();
+		
+		ResultSet rs = null;
+		try {
+			statement = conn.createStatement();
+			String sql = "SELECT eventID FROM `basicDB`.`user_event_link` WHERE userID= " + userID + ";";
+			rs = statement.executeQuery(sql);
+			
+			int numOfEvents = 0;
+			ArrayList<Integer> myIntList = new ArrayList<Integer>();
+			
+			while(rs.next()) {
+				myIntList.add(rs.getInt(1));
+			}
+			
+			sql = "SELECT * FROM basicDB.events WHERE id IN('";
+			
+			for(int i = 0; i < myIntList.size(); i++) {
+				sql += myIntList.get(i).toString();
+				
+				if(i < myIntList.size() - 1)
+					sql += "', '";			//Append this for all but the last selection.
+				else
+					sql += "');";			//Append this for the last selection.
+			}
+			
+			rs = statement.executeQuery(sql);
+			
+			while(rs.next()) {
+				event = new Events();
+				Integer myInt = rs.getInt("id");
+				event.setEventID(myInt.toString());
+				event.setName(rs.getString("name"));
+				event.setHostEmail(rs.getString("hostEmail"));
+				event.setDescription(rs.getString("description"));
+				event.setLocation(rs.getString("location"));
+				event.setPriv(rs.getString("private"));
+				event.setEventDate(rs.getString("eventDate"));
+				event.setEventTime(rs.getString("eventTime"));
+				event.setCategory(rs.getString("category"));
+				
+				myEventList.add(event);
+			}
+			
+			
+			rs.close();
+			statement.close();
+			conn.close();			
+		}catch (SQLException e) {
+				e.printStackTrace();
+		}
+		return myEventList;
+	}
 
 	public JSONObject getUsersApartOfEvent(String eventID) {
 		//Returns the events a user is a part of.

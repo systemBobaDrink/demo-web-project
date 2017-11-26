@@ -353,5 +353,15 @@ public class RestWebController {
 
 		return returnThis;
 	}
+	
+	@RequestMapping(value = "/sqlGetEventsUserIsApartOfReturnObject/", method = RequestMethod.GET)
+	public ArrayList<Events> sqlGetEventsUserIsApartOfReturnObject(
+			@RequestParam(value = "userID") String userID) {
+		JDBCUtil util = new JDBCUtil();
+		
+		ArrayList<Events> rs = util.getEventsUserIsApartOfReturnObject(userID);
+		
+		return rs;
+	}
 		
 }
