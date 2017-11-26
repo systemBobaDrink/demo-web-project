@@ -45,7 +45,7 @@ footer {
 </head>
 
 <body>
-	<div ng-app="pairedApp" ng-controller="pairedEventController">
+	<div data-ng-app="pairedApp" data-ng-controller="pairedEventController">
 
 		<!-- Navigation Bar -->
 		<nav class="navbar navbar-inverse">
@@ -90,27 +90,26 @@ footer {
 				<!-- End of Sidebar -->
 
 				<!-- General Event -->
-				
-				<div class="col-sm-9" ng-init="getAllEvents()">
+				<!-- Events -->
+				<div>
+					<input type="text" data-ng-model="userID">Enter your userID! </input>
+					<!-- NEED TO UPDATE THIS for the user email http call  -->
+				</div>
+				<div class="col-sm-9" data-ng-init="getAllEvents()">
+
 					<div data-ng-repeat="event in testInput ">
 						{{event}}
-						
-						<button ng-click="addEvent()"></button>
-							{{test}}
-						<!-- NOTE THIS IS HOW YOU WOULD GET ALL THE EVENTS   -->
-
-
-
+						<button ng-click="addUserEventLink(event.eventID)">Attend event {{event.name}}!</button>
+	
 					</div>
 				</div>
-
 			</div>
-
 			<footer class="container-fluid text-center">
 				<hr></hr>
 				<p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480 Fall 2017</p>
 				<img src="/images/paired.png" style="width: 40px;"></img>
 			</footer>
+
 		</div>
 		<!-- End of Main Page Content -->
 

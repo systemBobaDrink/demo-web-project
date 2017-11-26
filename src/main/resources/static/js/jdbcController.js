@@ -93,7 +93,7 @@ app.controller('jdbcCntrl', function ($scope, $http) {
 		}, function myError(response){
 			$scope.error = "Problem getting all events.";
 			$scope.testInput = response.data;
-		})
+		});
 	}
 });
 

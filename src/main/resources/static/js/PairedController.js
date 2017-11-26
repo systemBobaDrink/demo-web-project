@@ -19,7 +19,8 @@ app.controller('pairedController', function($scope) {
 
 });
 
-app.controller('pairedEventController', function($scope) {
+app.controller('pairedEventController', function($scope, $http) {
+	$scope.userID = "";
 	$scope.getAllEvents = function(){
 		$http.get("/sqlGetAllEvents/")
 		.then(function mySuccess(response){
@@ -27,13 +28,13 @@ app.controller('pairedEventController', function($scope) {
 		}, function myError(response){
 			$scope.error = "Problem getting all events.";
 			$scope.testInput = response.data;
-		})
+		});
 	}
-$scope.addEvent=function(){
-	$scope.test = "TEST";
-
-}
-
+	$scope.addUserEventLink = function(eventID){
+		$http.post("/sqlAddUserEventLink/" + "?userID=" + $scope.userID + "&eventID=" + eventID)
+		.then(function(response){
+		});
+	}
 });
 
 app.controller('pairedCreateEventController', function($scope , $http) {
@@ -80,16 +81,7 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 });
 
 app.controller('pairedYourEventsController', function($scope, $http) {
-	// TODO: Update this function to the user using email address 
-	$scope.getAllEvents = function(){
-		$http.get("/sqlGetAllEvents/")
-		.then(function mySuccess(response){
-			$scope.testInput = response.data;
-		}, function myError(response){
-			$scope.error = "Problem getting all events.";
-			$scope.testInput = response.data;
-		})
-	}
+
 	$scope.getEventsUserIsApartOfReturnObject = function(userID){
 		$http.get("/sqlGetEventsUserIsApartOfReturnObject/" + "?userID=" + userID)
 		.then(function mySuccess(response){
