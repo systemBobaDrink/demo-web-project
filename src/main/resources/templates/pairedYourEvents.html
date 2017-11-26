@@ -89,12 +89,14 @@ footer {
 				<!-- Events -->
 				<div>
 				<input type="text" data-ng-model="userID">Enter your userID! </input>  
-				<button ng-click="getAllEvents()">Get your events </button> <!-- NEED TO UPDATE THIS for the user email http call  -->
+				<button data-ng-click="getEventsUserIsApartOfReturnObject(userID)">Get your events </button> 
+				<!-- NEED TO UPDATE THIS for the user email http call  -->
 				</div>
 				<div class="col-sm-9">
+				{{error}}
 					<div data-ng-repeat="event in testInput ">
 						{{event}} 
-
+	
 						<!-- NOTE THIS IS HOW YOU WOULD GET ALL THE EVENTS   -->
 
 

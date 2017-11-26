@@ -90,5 +90,14 @@ app.controller('pairedYourEventsController', function($scope, $http) {
 			$scope.testInput = response.data;
 		})
 	}
+	$scope.getEventsUserIsApartOfReturnObject = function(userID){
+		$http.get("/sqlGetEventsUserIsApartOfReturnObject/" + "?userID=" + userID)
+		.then(function mySuccess(response){
+			$scope.testInput = response.data;
+		}, function myError(response){
+			$scope.error = "Problem getting all events user is a part of.";
+			$scope.testInput = response.data;
+		});
+	}
 
 });
