@@ -137,7 +137,7 @@ public class JDBCUtil {
 		
 	}
 	
-	public void addEvent(String eventName, String hostID, String description, String priv, String location, String eventTime, String eventDate, String eventCategory) {
+	public void addEvent(String eventName, String hostEmail, String description, String priv, String location, String eventTime, String eventDate, String eventCategory) {
 		//Used with the addEvent method found in RESTController.
 		//Used to insert events into the event table, with the above parameters.
 		
@@ -145,8 +145,8 @@ public class JDBCUtil {
 		System.out.println(eventCategory);
 		try {
 			statement = conn.createStatement();
-			String sql = "INSERT INTO `basicDB`.`events` (`name`, `host`, `description`, `location`, `private`, `eventDate`, `eventTime`, `category`) VALUES "
-					   + "('" + eventName + "', '" + hostID + "', '" + description + "', '" + location + "', '" + priv + "', '" + eventDate + "', '" + eventTime + "', '" + eventCategory + "');";			
+			String sql = "INSERT INTO `basicDB`.`events` (`name`, `hostEmail`, `description`, `location`, `private`, `eventDate`, `eventTime`, `category`) VALUES "
+					   + "('" + eventName + "', '" + hostEmail + "', '" + description + "', '" + location + "', '" + priv + "', '" + eventDate + "', '" + eventTime + "', '" + eventCategory + "');";			
 			statement.executeUpdate(sql);
 			statement.close();
 			conn.close();
@@ -171,7 +171,7 @@ public class JDBCUtil {
 				Integer myInt = rs.getInt("id");
 				event.setEventID(myInt.toString());
 				event.setName(rs.getString("name"));
-				event.setHostID(rs.getString("host"));
+				event.setHostEmail(rs.getString("hostEmail"));
 				event.setDescription(rs.getString("description"));
 				event.setLocation(rs.getString("location"));
 				event.setPriv(rs.getString("private"));
@@ -302,7 +302,7 @@ public class JDBCUtil {
 				Integer myInt = rs.getInt("id");
 				event.setEventID(myInt.toString());
 				event.setName(rs.getString("name"));
-				event.setHostID(rs.getString("host"));
+				event.setHostEmail(rs.getString("hostEmail"));
 				event.setDescription(rs.getString("description"));
 				event.setLocation(rs.getString("location"));
 				event.setPriv(rs.getString("private"));

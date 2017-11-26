@@ -26,7 +26,7 @@ app.controller('jdbcCntrl', function ($scope, $http) {
 	}
 	
 	$scope.addEvent = function(){
-		$http.post("/sqlAddEvent/" + "?eventName=" + $scope.eventName + "&hostID=" + $scope.hostID + "&description=" + $scope.description 
+		$http.post("/sqlAddEvent/" + "?eventName=" + $scope.eventName + "&hostEmail=" + $scope.hostEmail + "&description=" + $scope.description 
 				   + "&priv=" + $scope.priv + "&location=" + $scope.location + "&eventTime=" + $scope.eventTime + "&eventDate=" + $scope.eventDate)
 		.then(function(response){			   
 		});

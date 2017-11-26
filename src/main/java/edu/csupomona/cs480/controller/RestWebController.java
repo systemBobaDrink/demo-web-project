@@ -282,7 +282,7 @@ public class RestWebController {
 	@RequestMapping(value = "/sqlAddEvent/", method = RequestMethod.POST)
 	void addEvent(
 			@RequestParam(value = "eventName") String eventName,
-			@RequestParam(value = "hostID") String hostID,
+			@RequestParam(value = "hostEmail") String hostEmail,
 			@RequestParam(value = "description", required = false) String description,
 			@RequestParam(value = "priv") String priv,
 			@RequestParam(value = "location", required = false) String location,
@@ -290,7 +290,7 @@ public class RestWebController {
 			@RequestParam(value = "eventDate") String eventDate,
 			@RequestParam(value = "eventCategory") String eventCategory){
 		JDBCUtil util = new JDBCUtil();
-		util.addEvent(eventName, hostID, description, priv, location, eventTime, eventDate, eventCategory);
+		util.addEvent(eventName, hostEmail, description, priv, location, eventTime, eventDate, eventCategory);
 	}
 	
 	@RequestMapping(value = "/sqlGetEventByID/", method = RequestMethod.GET)

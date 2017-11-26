@@ -3,7 +3,7 @@ package edu.csupomona.cs480.data;
 public class Events {
 	private String eventID;
 	private String name;
-	private String hostID;
+	private String hostEmail;
 	private String description;
 	private String location;
 	private String eventTime;
@@ -14,7 +14,7 @@ public class Events {
 	public void reset() {
 		this.eventID = "";
 		this.name = "";
-		this.hostID = "";
+		this.hostEmail = "";
 		this.description = "";
 		this.location = "";
 		this.eventTime = "";
@@ -37,11 +37,11 @@ public class Events {
 		this.location = location;
 	}
 
-	public String getHostID() {
-		return hostID;
+	public String getHostEmail() {
+		return hostEmail;
 	}
-	public void setHostID(String hostID) {
-		this.hostID = hostID;
+	public void setHostEmail(String hostEmail) {
+		this.hostEmail = hostEmail;
 	}
 
 	public String getDescription() {

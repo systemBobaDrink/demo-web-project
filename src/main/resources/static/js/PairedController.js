@@ -29,7 +29,7 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 	$scope.categories = ["Art", "Rock Climbing", "Studying", "Tennis", "Tutoring"];	
 	//3. attach originalStudent model object
 	$scope.originalEvent = {
-			userID: '',
+			userEmail: '',
 			eventName: '',
 			eventVisibility: '',
 			eventLocation: '',
@@ -51,7 +51,7 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 		$scope.createdEvent.eventDate = $('#datepicker').val();
 		$scope.test = $scope.createdEvent.eventCategory;
 
-		$http.post("/sqlAddEvent/" + "?eventName=" + $scope.createdEvent.eventName + "&hostID=" + $scope.createdEvent.userID + "&description=" + $scope.createdEvent.eventDescription 
+		$http.post("/sqlAddEvent/" + "?eventName=" + $scope.createdEvent.eventName + "&hostEmail=" + $scope.createdEvent.userEmail + "&description=" + $scope.createdEvent.eventDescription 
 				+ "&priv=" + $scope.createdEvent.eventVisibility + "&location=" + $scope.createdEvent.eventLocation + "&eventTime=" + $scope.createdEvent.eventTime + "&eventDate=" + $scope.createdEvent.eventDate
 				+ "&eventCategory=" + $scope.createdEvent.eventCategory)
 				.then(function(response){			   
@@ -66,8 +66,6 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 	}
 
 });
-
-
 
 app.controller('pairedYourEventsController', function($scope, $http) {
 	$scope.getAllEvents = function(){
