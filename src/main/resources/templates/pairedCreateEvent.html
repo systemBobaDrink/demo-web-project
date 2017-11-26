@@ -50,7 +50,7 @@
 	        interval: 60
 	    });
 	    
-	    $('#submitCreateEventForm').formValidation({
+	   /*  $('#submitCreateEventForm').formValidation({
 	        framework: 'bootstrap',
 	        icon: {
 	            valid: 'glyphicon glyphicon-ok',
@@ -82,7 +82,7 @@
 	                }
 	            }
 	        }
-	    });
+	    }); */
 	});
   </script>
   
@@ -113,7 +113,7 @@
       .row.content {height: auto;} 
     }
     
-    #submitCreateEventForm .has-error .control-label,
+/*     #submitCreateEventForm .has-error .control-label,
 	#submitCreateEventForm .has-error .help-block,
 	#submitCreateEventForm .has-error .form-control-feedback {
 	    color: #f39c12;
@@ -123,7 +123,7 @@
 	#submitCreateEventForm .has-success .help-block,
 	#submitCreateEventForm .has-success .form-control-feedback {
 	    color: #18bc9c;
-	}
+	} */
   </style>
 </head>
 
@@ -170,12 +170,19 @@
 					  		<h3>Create an Event {{test}}</h3>
 					  	</div>
 					  	
-						<form id="submitCreateEventForm" data-ng-submit="submitCreateEventForm()" role="form">
+					<form data-toggle="validator" id="submitCreateEventForm" data-ng-submit="submitCreateEventForm()" role="form">
 						  <div class="form-group">
 						 	 <a href="#" class="glyphicon glyphicon-user" data-toggle="tooltip"></a>
 						 	 <label for="eventCreator" class="control-label">Creator:</label>
-						 	 <input type="text" class="form-control" id="userID" name="username" placeholder="First name Last name" data-ng-model="createdEvent.userID"></input>
-						  </div> 
+						 	 <input type="text" class="form-control" id="userID" name="username" placeholder="First name Last name" data-ng-model="createdEvent.userID" pattern="^[_A-z]{1,}$" maxlength="10" required="required"></input>
+						 </div>
+						 	 <div class="input-group has-feedback">
+						 	 	
+						  	</div>
+						    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						    <div class="help-block with-errors">Hey look, this one has feedback icons!</div>
+						  
+						  
 						  <!-- End div for event creator  -->
 						  
 						   <div class="form-group">
