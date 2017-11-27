@@ -76,14 +76,13 @@ footer {
 		<!-- Sidebar -->
 		<div class="container-fluid" >
 			<div class="grid">
-				<div class="col-sm-3 sidenav">
+				<div class="sidenav">
 					<div class="col-sm-3 sidenav">
 						<h4>Filter By:</h4>
-						<div>
-							<div data-ng-click="updateCategoryInput('')"><a> none</a></div>
-						</div>
-						<ul class="nav nav-pills nav-stacked" data-ng-repeat="event in testInput | unique: 'category'">
-							<li data-ng-click="updateCategoryInput(event.category)"><a> {{event.category}}</a></li>
+						
+						<ul class="nav nav-pills nav-stacked" >
+							<li data-ng-click="updateCategoryInput('')"><a>All Categories</a></li>
+							<li data-ng-repeat="event in testInput | unique: 'category'" data-ng-click="updateCategoryInput(event.category)"><a> {{event.category}}</a></li>
 						</ul>
 					</div>
 				</div>
