@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<h3>My Google Maps Demo</h3>
+<div id="map"></div>
+<form id="frm1">
+    First name: <input type="number" name="fname" value=-25.363><br>
+    Last name: <input type="number" name="lname" value=131.044><br><br>
+</form>
+<button onclick="initMap()">Try it</button>
+<script>
+  function initMap() {
+    var uluru = {lat: -25.363, lng: 131.044};
+    var bob = {lat: document.getElementById('frm1').elements[0].value, lng: document.getElementById('frm1').elements[1].value};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcBW_7Xk8gwoyVKlQ3F91thCRtmaDP8ng&callback=initMap">
+</script>
+</body>
+</html>

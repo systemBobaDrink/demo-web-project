@@ -109,7 +109,7 @@ footer {
 					</div>
 					<hr />
 				<input type="text" data-ng-model="id"> Enter Id </input>
-					<div data-ng-repeat="event in testInput | filter: { eventID :id }">
+					<div data-ng-repeat="event in testInput | filter: { category :id }">
 						<h4>{{event.name}}</h4>
 
 						<h5>
