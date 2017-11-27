@@ -42,7 +42,9 @@ footer {
 	}
 }
 
-.glyphicon-asterisk { color: red }
+.glyphicon-asterisk {
+	color: red
+}
 </style>
 </head>
 
@@ -79,9 +81,9 @@ footer {
 				<!-- Sidebar -->
 				<div class="col-sm-3 sidenav">
 					<h4>Filter By:</h4>
-					<ul class="nav nav-pills nav-stacked">
-						<li class="active"><a href="#section1">All Events</a></li>
-						<li><a href="#section2">Dance</a></li>
+					<ul class="nav nav-pills nav-stacked" ng-model = "id">
+						<li class="active"><a href="#section1">All Events </a></li>
+						<li value="1"><a href="#section2">Dance</a></li>
 						<li><a href="#section3">Gym and Fitness</a></li>
 						<li><a href="#section4">Music</a></li>
 						<li><a href="#section5">Professional Development</a></li>
@@ -98,51 +100,55 @@ footer {
 				<div class="col-sm-9" data-ng-init="getAllEvents()">
 					<div>
 						<h2>Find Events to Attend</h2>
-						
+
 						<!-- NEED THIS TO ALLOW USER TO ATTEND EVENT  -->
 						<div>
 							<span class="glyphicon glyphicon-asterisk"></span>Enter your UserID: 
-						 	<input type="text" data-ng-model="userID"></input>
+							<input type="text" data-ng-model="userID"></input>
 						</div>
 					</div>
-					<hr/>
-
-					<div data-ng-repeat="event in testInput ">
+					<hr />
+				<input type="text" data-ng-model="id"> Enter Id </input>
+					<div data-ng-repeat="event in testInput | filter: { eventID :id }">
 						<h4>{{event.name}}</h4>
-						
+
 						<h5>
-							<span class="label label-primary">{{event.category}}</span>
-							<br/><br/>
+							<span class="label label-primary">{{event.category}}</span> <br />
+							<br />
 						</h5>
-						
+
 						<h5>
 							<span class="glyphicon glyphicon-time"></span> Event hosted by {{event.hostEmail}}
 						</h5>
-						
+
 						<h5>
 							<span class="glyphicon glyphicon-map-marker"></span> {{event.location}}
 						</h5>
-						
+
 						<h5>
 							<span class="glyphicon glyphicon-calendar"></span> {{event.eventDate}} {{event.eventTime}}
 						</h5>
-						
+
 						<h5>
-							<div ng-if="event.priv==0"><span class="glyphicon glyphicon-eye-open"></span> Visibility: Public</div>
-							<div ng-if="event.priv==1"><span class="glyphicon glyphicon-eye-close"></span> Visibility: Private</div>
+							<div ng-if="event.priv==0">
+								<span class="glyphicon glyphicon-eye-open"></span> Visibility: Public
+							</div>
+							<div ng-if="event.priv==1">
+								<span class="glyphicon glyphicon-eye-close"></span> Visibility: Private
+							</div>
 						</h5>
 
 						<h5>
 							<p>Event Description: {{event.description}}</p>
 						</h5>
-						
+
 						<button type="button" ng-click="addUserEventLink(event.eventID)" class="btn btn-info">Attend</button>
-						<hr/>
+						<hr />
 					</div>
 				</div>
 			</div>
 			<footer class="container-fluid text-center">
-				<hr/>
+				<hr />
 				<p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480 Fall 2017</p>
 				<img src="/images/paired.png" style="width: 40px;"></img>
 			</footer>
