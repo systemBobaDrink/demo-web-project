@@ -81,11 +81,12 @@ footer {
 				<!-- Sidebar -->
 				<div class="col-sm-3 sidenav">
 					<h4>Filter By:</h4>
+					<ul>
+						<li data-ng-click="updateCategoryInput('')"><a> none</a></li>
+					</ul>
 					<ul class="nav nav-pills nav-stacked" data-ng-repeat="event in testInput | unique: 'category'">
 						<li data-ng-click="updateCategoryInput(event.category)"><a> {{event.category}}</a></li>
 					</ul>
-
-					<br></br>
 				</div>
 				<!-- End of Sidebar -->
 

@@ -132,5 +132,8 @@ app.controller('pairedYourEventsController', function($scope, $http) {
 			$scope.testInput = response.data;
 		});
 	}
+	$scope.updateCategoryInput = function(value) {
+		$scope.filterCategory = value ; 
+	}
 
 });
