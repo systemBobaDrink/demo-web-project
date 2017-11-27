@@ -7,14 +7,14 @@ app.controller('pairedController', function($scope) {
 		{source: "/images/japanesegarden.jpg", title: "George and Sakaye Aratani Japanese Garden"}];
 
 	$scope.displayEventImages = [
-		{source: "/images/calpoly.jpg", title:"Cal Poly Pomona"},
-		{source:  "/images/bric.jpg", title: "BRIC"},
-		{source: "/images/japanesegarden.jpg", title: "Japanese Garden"},
-		{source: "/images/lylecenter.jpg", title: "Lyle Center"  },
-		{source: "/images/calpoly.jpg", title:"Cal Poly Pomona1"},
-		{source:  "/images/bric.jpg", title: "BRIC1"},
-		{source: "/images/japanesegarden.jpg", title: "Japanese Garden1"},
-		{source: "/images/lylecenter.jpg", title: "Lyle Center1"} ];
+		{source: "/images/programming.jpg", title: "CS 480 Study Group"},
+		{source: "/images/rockclimbing.jpeg", title:"Rock Climbing"},
+		{source:  "/images/hiking.jpeg", title: "Hiking"},
+		{source: "/images/strangerthings.jpg", title: "Stranger Things Fan Club"  },
+		{source: "/images/studying.jpeg", title: "Cramming for Finals"},
+		{source:  "/images/jamsesh.jpeg", title: "Musician's Club"},
+		{source: "/images/pocketcamp.jpg", title:"AC Pocket Camp Addicts"},
+		{source: "/images/socialdance.jpeg", title: "Salsa Social Dance Event"} ];
 
 
 });
