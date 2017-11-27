@@ -95,12 +95,36 @@ footer {
 				<div class="col-sm-9">
 				
 					<div  data-ng-repeat="event in testInput ">
-						{{event}} 
-	
-						<!-- NOTE THIS IS HOW YOU WOULD GET ALL THE EVENTS   -->
+						<h2>{{event.name}}</h2>
+						
+						<h5>
+							<span class="label label-primary">{{event.category}}</span>
+							<br/><br/>
+						</h5>
+						
+						<h5>
+							<span class="glyphicon glyphicon-time"></span> Event hosted by {{event.hostEmail}}
+						</h5>
+						
+						<h5>
+							<span class="glyphicon glyphicon-map-marker"></span> {{event.location}}
+						</h5>
+						
+						<h5>
+							<span class="glyphicon glyphicon-calendar"></span> {{event.eventDate}} {{event.eventTime}}
+						</h5>
+						
+						<h5>
+							<div ng-if="event.priv==0"><span class="glyphicon glyphicon-eye-open"></span> Visibility: Public</div>
+							<div ng-if="event.priv==1"><span class="glyphicon glyphicon-eye-close"></span> Visibility: Private</div>
+						</h5>
 
-
-
+						<h5>
+							<p>Event Description: {{event.description}}</p>
+							<br/>
+						</h5>
+						
+						<hr/>
 					</div>
 				</div>
 				<!-- End all events div  -->
