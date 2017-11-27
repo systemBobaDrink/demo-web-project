@@ -76,11 +76,14 @@ footer {
 		<!-- End of Nav Bar -->
 
 		<!-- Main Page Content -->
-		<div class="container-fluid">
+		<div class="container-fluid" data-ng-init="getAllEvents()">
 			<div class="grid">
 				<!-- Sidebar -->
 				<div class="col-sm-3 sidenav">
 					<h4>Filter By:</h4>
+					<div data-ng-repeat="event in testInput ">
+					{{event.category}}
+					</div>
 					<ul class="nav nav-pills nav-stacked" ng-model = "id">
 						<li class="active"><a href="#section1">All Events </a></li>
 						<li value="1"><a href="#section2">Dance</a></li>
@@ -97,7 +100,7 @@ footer {
 				<!-- End of Sidebar -->
 
 				<!-- Events -->
-				<div class="col-sm-9" data-ng-init="getAllEvents()">
+				<div class="col-sm-9" >
 					<div>
 						<h2>Find Events to Attend</h2>
 
