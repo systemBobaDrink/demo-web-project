@@ -1,118 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Paired Create Event Page</title>
-  <meta charset="utf-8"></meta>
-  <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-  <script src="/js/PairedController.js"></script>
-  <link href="src/css/angular-datepicker.css" rel="stylesheet" type="text/css"></link>
-  
-  <!--  jQuery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-	  
-  <!-- Bootstrap Date-Picker Plugin -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"></link>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-  
-  <!-- Date-Picker Script -->
-  <script>
-    $(document).ready(function(){
-      var date_input=$('input[name="date"]'); //our date input has the name "date"
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
+<title>Paired Create Event Page</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="/js/PairedController.js"></script>
+<link href="src/css/angular-datepicker.css" rel="stylesheet"
+	type="text/css"></link>
 
-	    $('input.timepicker').timepicker({
-	        timeFormat: 'h:mm p',
-	        // year, month, day and seconds are not important
-	        minTime: new Date(0, 0, 0, 0, 0, 0),
-	        maxTime: new Date(0, 0, 0, 23, 0, 0),
-	        // time entries start being generated at 6AM but the plugin 
-	        // shows only those within the [minTime, maxTime] interval
-	        startHour: 12,
-	        // the value of the first item in the dropdown, when the input
-	        // field is empty. This overrides the startHour and startMinute 
-	        // options
-	        startTime: new Date(0, 0, 0, 0, 0, 0),
-	        // items in the dropdown are separated by at interval minutes
-	        interval: 60
-	    });
-	    
-	   /*  $('#submitCreateEventForm').formValidation({
-	        framework: 'bootstrap',
-	        icon: {
-	            valid: 'glyphicon glyphicon-ok',
-	            invalid: 'glyphicon glyphicon-remove',
-	            validating: 'glyphicon glyphicon-refresh'
-	        },
-	        fields: {
-	            username: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'The username is required'
-	                    },
-	                    stringLength: {
-	                        min: 6,
-	                        max: 30,
-	                        message: 'The username must be more than 6 and less than 30 characters long'
-	                    },
-	                    regexp: {
-	                        regexp: /^[a-zA-Z]+$/,
-	                        message: 'The username can only consist of alphabetical characters.'
-	                    }
-	                }
-	            },
-	            eventname: {
-	                validators: {
-	                    notEmpty: {
-	                        message: 'The event name is required'
-	                    }
-	                }
-	            }
-	        }
-	    }); */
-	});
-  </script>
-  
-  <style>
-    /* Format navbar */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Footer */
-    footer {
-      padding: 10px;
-    }
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      background-color: #f1f1f1;
-      height: 800px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height: auto;} 
-    }
-    
+<!--  jQuery -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css"></link>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+<!-- Date-Picker Script -->
+<script>
+	$(document).ready(
+			function() {
+				var date_input = $('input[name="date"]'); //our date input has the name "date"
+				var container = $('.bootstrap-iso form').length > 0 ? $(
+						'.bootstrap-iso form').parent() : "body";
+				var options = {
+					format : 'mm/dd/yyyy',
+					container : container,
+					todayHighlight : true,
+					autoclose : true,
+				};
+				date_input.datepicker(options);
+
+				$('input.timepicker').timepicker({
+					timeFormat : 'h:mm p',
+					// year, month, day and seconds are not important
+					minTime : new Date(0, 0, 0, 0, 0, 0),
+					maxTime : new Date(0, 0, 0, 23, 0, 0),
+					// time entries start being generated at 6AM but the plugin 
+					// shows only those within the [minTime, maxTime] interval
+					startHour : 12,
+					// the value of the first item in the dropdown, when the input
+					// field is empty. This overrides the startHour and startMinute 
+					// options
+					startTime : new Date(0, 0, 0, 0, 0, 0),
+					// items in the dropdown are separated by at interval minutes
+					interval : 60
+				});
+
+				/*  $('#submitCreateEventForm').formValidation({
+				     framework: 'bootstrap',
+				     icon: {
+				         valid: 'glyphicon glyphicon-ok',
+				         invalid: 'glyphicon glyphicon-remove',
+				         validating: 'glyphicon glyphicon-refresh'
+				     },
+				     fields: {
+				         username: {
+				             validators: {
+				                 notEmpty: {
+				                     message: 'The username is required'
+				                 },
+				                 stringLength: {
+				                     min: 6,
+				                     max: 30,
+				                     message: 'The username must be more than 6 and less than 30 characters long'
+				                 },
+				                 regexp: {
+				                     regexp: /^[a-zA-Z]+$/,
+				                     message: 'The username can only consist of alphabetical characters.'
+				                 }
+				             }
+				         },
+				         eventname: {
+				             validators: {
+				                 notEmpty: {
+				                     message: 'The event name is required'
+				                 }
+				             }
+				         }
+				     }
+				 }); */
+			});
+</script>
+
+<style>
+/* Format navbar */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Footer */
+footer {
+	padding: 10px;
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+	background-color: #f1f1f1;
+	height: 910px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	}
+	.row.content {
+		height: auto;
+	}
+}
+
 /*     #submitCreateEventForm .has-error .control-label,
 	#submitCreateEventForm .has-error .help-block,
 	#submitCreateEventForm .has-error .form-control-feedback {
@@ -124,12 +138,13 @@
 	#submitCreateEventForm .has-success .form-control-feedback {
 	    color: #18bc9c;
 	} */
-  </style>
+</style>
 </head>
 
 <body>
-	<div data-ng-app="pairedApp" data-ng-controller="pairedCreateEventController">
-		
+	<div data-ng-app="pairedApp"
+		data-ng-controller="pairedCreateEventController">
+
 		<!-- Navigation Bar -->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
@@ -156,119 +171,165 @@
 			</div>
 		</nav>
 		<!-- End of Nav Bar -->
-		
+
 		<!-- Create Event Form -->
 		<div class="container-fluid">
-			  <div class="row content">
-			 	<!-- Sidebar -->
-			    <div class="col-sm-3 sidenav"></div>
-			    
-			    <!-- Form Contents -->
-				<div >
-					<div class="col-sm-9" >
+			<div class="grid">
+				<!-- Sidebar -->
+				<div class="col-sm-3 sidenav"></div>
+
+				<!-- Form Contents -->
+				<div>
+					<div class="col-sm-9">
 						<div class="text-center">
-					  		<h3>Create an Event {{test}}</h3>
-					  	</div>
-					  	
-					<form data-toggle="validator" id="submitCreateEventForm" data-ng-submit="submitCreateEventForm()" role="form">
-						  <div class="form-group">
-						 	 <a href="#" class="glyphicon glyphicon-user" data-toggle="tooltip"></a>
-						 	 <label for="eventCreator" class="control-label">Creator:</label>
-						 	 <input type="text" class="form-control" id="userID" name="username" placeholder="First name Last name" data-ng-model="createdEvent.userID" pattern="^[_A-z]{1,}$" maxlength="10" required="required"></input>
-						 </div>
-						 	 <div class="input-group has-feedback">
-						 	 	
-						  	</div>
-						    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-						    <div class="help-block with-errors">Hey look, this one has feedback icons!</div>
-						  
-						  
+							<h2>Create Event</h2>
+						</div><hr/>
 
-						  <!-- End div for event creator  -->
-						  
-						   <div class="form-group">
-							    <a href="#" class="glyphicon glyphicon-pushpin" data-toggle="tooltip"></a> 
-							    <label for="eventNamer" class="control-label">Event:</label>
-							    <input type="text" class="form-control" id="eventName" name="eventname" placeholder="Name of Event" data-ng-model="createdEvent.eventName"></input>
-						   </div> 
-						   <!-- End div for event Name  -->
-						  
-						  <div class="form-group">
-						  	<label for="eventVisibility">Event Visibility:</label>
-						  	<a href="#" class="glyphicon glyphicon-question-sign" data-toggle="tooltip"></a>
-						  <div class="radio">
-							  <label><input data-ng-model="createdEvent.eventVisibility" data-ng-value ="'0'" type="radio" name="optradio" >Public</input></label>
+						<form data-toggle="validator" id="submitCreateEventForm"
+							data-ng-submit="submitCreateEventForm()" role="form">
+							<!-- Event Creator -->
+							<div class="row">
+								<div class="col-sm-4">
+									<a href="#" class="glyphicon glyphicon-user"
+										data-toggle="tooltip"></a> <label for="eventCreator"
+										class="control-label">Creator:</label> <input type="text"
+										class="form-control" id="userID" name="username"
+										placeholder="First name Last name"
+										data-ng-model="createdEvent.userID" pattern="^[_A-z]{1,}$"
+										maxlength="10" required="required"></input>
+								</div>
 							</div>
-							<div class="radio">
-							  <label><input data-ng-model="createdEvent.eventVisibility" data-ng-value ="'1'" type="radio" name="optradio" >Private</input></label>
-							</div>
-						  </div> 
-						  <!-- End div for event Visibility  -->
-						  
-						  <div class="form-group">
-						  	<a href="#" class="glyphicon glyphicon-globe" data-toggle="tooltip"></a>
-						    <label for="location" class="control-label">Location:</label>
-						    <input type="location" class="form-control" id="location" placeholder="Address of event" data-ng-model="createdEvent.eventLocation"></input>
-						  </div> 
-						  <!-- End div for event Location  -->
-						  
-						  <!-- Date Input -->
-						  <div class="form-group"> 
-						    <a href="#" class="glyphicon glyphicon-calendar" data-toggle="tooltip"></a>
-					        <label class="control-label" for="date">Start Date: </label>
-					        <input class="form-control" id="datepicker" name="date" data-format="yyyy-MM-dd" placeholder="MM/DD/YYY" type="text"  data-ng-model="createdEvent.eventDate" />
-					      </div>
-					      <!-- End of Date Input -->
-						  
-						  <!-- Time Input -->
-						  <div class="form-group">
-						  	<a href="#" class="glyphicon glyphicon-time" data-toggle="tooltip"></a>
-							  <label for="time" class="control-label">Start Time:</label>
-							  <input   id ="time" type="text" class="timepicker list-group-item" name="time" data-ng-model="createdEvent.eventTime" />
-						  </div>
-						  <!-- End of Time Input -->
-											
-						  <!-- Description Input -->					  
-						  <div class="form-group">
-						  	<a href="#" class="glyphicon glyphicon-pencil" data-toggle="tooltip"></a>
-						    <label for="description" class="control-label">Description:</label>
-						    <textarea class="form-control" rows="5" id="description" placeholder="Add Event Description..." data-ng-model="createdEvent.eventDescription"></textarea>
-						  </div>
-						  <!-- End of Description Input -->	
-						  
-						  <!-- Category Input -->
-						  <div class="form-group">
-						  	 <a href="#" class="glyphicon glyphicon-list" data-toggle="tooltip"></a>
-						  	 <label for="categories" class="control-label">Categories:</label>
-						  	 <select id = "category" class="form-control" data-ng-model="createdEvent.eventCategory">
-						  		 <option ng-repeat="option in categories" value="{{option}}">{{option}}</option>
-						  	 </select>
+							<br />
+							<!-- End div for event creator  -->
 
-						  </div>
-						  <!-- End div for Category Input -->
-						
-					 <br></br>
-					 <!-- Submit Button -->
-					 <input type="submit" value="Save" class="btn btn-primary" /> 
-					 <input type="reset" value="Reset" data-ng-click="resetForm()" class="btn" /> <br/>
-					 <!-- End of Submit Button -->
-				</form>
-						
-				<footer class="container-fluid text-center">
-				  <hr></hr>
-				  <p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480 Fall 2017</p>
-				  <img src="/images/paired.png" style="width:40px;"></img>
-				</footer>
-					
+							<!-- Event Name -->
+							<div class="row">
+								<div class="col-sm-4">
+									<a href="#" class="glyphicon glyphicon-pushpin"
+										data-toggle="tooltip"></a> <label for="eventNamer"
+										class="control-label">Event:</label> <input type="text"
+										class="form-control" id="eventName" name="eventname"
+										placeholder="Name of Event"
+										data-ng-model="createdEvent.eventName"></input>
+								</div>
+							</div>
+							<br />
+							<!-- End div for event Name  -->
+
+							<!-- Visibility -->
+							<div class="row">
+								<div class="col-sm-4">
+									<a href ="#" class="glyphicon glyphicon-question-sign"
+										data-toggle="tooltip">
+									</a> <label for="eventVisibility">Event Visibility:</label>
+									<div class="radio">
+										<label><input
+											data-ng-model="createdEvent.eventVisibility"
+											data-ng-value="'0'" type="radio" name="optradio">Public</input></label>
+									</div>
+									<div class="radio">
+										<label><input
+											data-ng-model="createdEvent.eventVisibility"
+											data-ng-value="'1'" type="radio" name="optradio">Private</input></label>
+									</div>
+								</div>
+							</div>
+							<br />
+							<!-- End div for event Visibility  -->
+
+							<!-- Location -->
+							<div class="row">
+								<div class="col-sm-4">
+									<a href="#" class="glyphicon glyphicon-globe"
+										data-toggle="tooltip"></a> <label for="location"
+										class="control-label">Location:</label> <input type="location"
+										class="form-control" id="location"
+										placeholder="Address of event"
+										data-ng-model="createdEvent.eventLocation"></input>
+								</div>
+							</div>
+							<br />
+							<!-- End div for event Location  -->
+
+							<!-- Date Input -->
+							<div class="row">
+								<div class="col-sm-4">
+									<a href="#" class="glyphicon glyphicon-calendar"
+										data-toggle="tooltip"></a> <label class="control-label"
+										for="date">Start Date: </label> <input class="form-control"
+										id="datepicker" name="date" data-format="yyyy-MM-dd"
+										placeholder="MM/DD/YYY" type="text"
+										data-ng-model="createdEvent.eventDate" />
+								</div>
+							</div>
+							<br/>
+							<!-- End of Date Input -->
+
+							<!-- Time Input -->
+							<div class="row">
+								<div class="col-sm-4">
+									<a href="#" class="glyphicon glyphicon-time"
+										data-toggle="tooltip"></a> <label for="time"
+										class="control-label">Start Time:</label> <input id="time"
+										type="text" class="timepicker list-group-item" name="time"
+										data-ng-model="createdEvent.eventTime" />
+								</div>
+							</div>
+							<br/>
+							<!-- End of Time Input -->
+
+							<!-- Description Input -->
+							<div class="row">
+								<div class="col-sm-8">
+									<a href="#" class="glyphicon glyphicon-pencil"
+										data-toggle="tooltip"></a> <label for="description"
+										class="control-label">Description:</label>
+									<textarea class="form-control" rows="5" id="description"
+										placeholder="Add Event Description..."
+										data-ng-model="createdEvent.eventDescription"></textarea>
+								</div>
+							</div>
+							<br/>
+							<!-- End of Description Input -->
+
+							<!-- Category Input -->
+							<div class="row">
+								<div class="col-sm-4">
+									<a href="#" class="glyphicon glyphicon-list"
+										data-toggle="tooltip"></a> <label for="categories"
+										class="control-label">Categories:</label> <select id="category"
+										class="form-control" data-ng-model="createdEvent.eventCategory">
+										<option ng-repeat="option in categories" value="{{option}}">{{option}}</option>
+									</select>
+								</div>
+							</div>
+							
+							<!-- End div for Category Input -->
+
+							<br></br>
+							<!-- Submit Button -->
+							<input type="submit" value="Save" class="btn btn-primary" /> <input
+								type="reset" value="Reset" data-ng-click="resetForm()"
+								class="btn" /> <br />
+							<!-- End of Submit Button -->
+						</form>
+
+						<footer class="container-fluid text-center">
+							<hr></hr>
+							<p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull;
+								CS480 Fall 2017</p>
+							<img src="/images/paired.png" style="width: 40px;"></img>
+						</footer>
+
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- End of Create Event Form -->
-		
+
 	</div>
-	
-	</body>
-	<script src="src/js/angular-datepicker.js"></script> 
- 	<script src="/js/PairedController.js"></script>
+
+</body>
+<script src="src/js/angular-datepicker.js"></script>
+<script src="/js/PairedController.js"></script>
 </html>

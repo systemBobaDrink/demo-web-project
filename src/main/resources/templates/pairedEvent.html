@@ -41,6 +41,8 @@ footer {
 		height: auto;
 	}
 }
+
+.glyphicon-asterisk { color: red }
 </style>
 </head>
 
@@ -73,7 +75,7 @@ footer {
 
 		<!-- Main Page Content -->
 		<div class="container-fluid">
-			<div class="row content">
+			<div class="grid">
 				<!-- Sidebar -->
 				<div class="col-sm-3 sidenav">
 					<h4>Filter By:</h4>
@@ -89,13 +91,18 @@ footer {
 				</div>
 				<!-- End of Sidebar -->
 
-				<!-- General Event -->
 				<!-- Events -->
-				<div>
-					<input type="text" data-ng-model="userID">Enter your userID! </input>
-					<!-- NEED TO UPDATE THIS for the user email http call  -->
-				</div>
 				<div class="col-sm-9" data-ng-init="getAllEvents()">
+					<div>
+						<h2>Find Events to Attend</h2>
+						
+						<!-- NEED THIS TO ALLOW USER TO ATTEND EVENT  -->
+						<div>
+							<span class="glyphicon glyphicon-asterisk"></span>Enter your UserID: 
+						 	<input type="text" data-ng-model="userID"></input>
+						</div>
+					</div>
+					<hr/>
 
 					<div data-ng-repeat="event in testInput ">
 						<h4>{{event.name}}</h4>
@@ -132,7 +139,7 @@ footer {
 				</div>
 			</div>
 			<footer class="container-fluid text-center">
-				<hr></hr>
+				<hr/>
 				<p>©Paired 2017 &bull; Developed by SystemBobaDrink &bull; CS480 Fall 2017</p>
 				<img src="/images/paired.png" style="width: 40px;"></img>
 			</footer>
