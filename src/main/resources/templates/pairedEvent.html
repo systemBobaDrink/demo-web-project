@@ -81,43 +81,32 @@ footer {
 				<!-- Sidebar -->
 				<div class="col-sm-3 sidenav">
 					<h4>Filter By:</h4>
-					<div data-ng-repeat="event in testInput | unique: 'category'">
-					{{event.category}}
-					</div>
-					<ul class="nav nav-pills nav-stacked" ng-model = "id">
-						<li class="active"><a href="#section1">All Events </a></li>
-						<li value="1"><a href="#section2">Dance</a></li>
-						<li><a href="#section3">Gym and Fitness</a></li>
-						<li><a href="#section4">Music</a></li>
-						<li><a href="#section5">Professional Development</a></li>
-						<li><a href="#section6">Outdoor Activities</a></li>
-						<li><a href="#section7">TV Shows</a></li>
-						<li><a href="#section8">Study Groups</a></li>
-						<li><a href="#section9">Video Games</a></li>
+					<ul class="nav nav-pills nav-stacked" data-ng-repeat="event in testInput | unique: 'category'">
+						<li data-ng-click="updateCategoryInput(event.category)"><a> {{event.category}}</a></li>
 					</ul>
+
 					<br></br>
 				</div>
 				<!-- End of Sidebar -->
 
 				<!-- Events -->
-				<div class="col-sm-9" >
+				<div class="col-sm-9">
 					<div>
 						<h2>Find Events to Attend</h2>
 
 						<!-- NEED THIS TO ALLOW USER TO ATTEND EVENT  -->
 						<div>
 							<span class="glyphicon glyphicon-asterisk"></span>Enter your UserID: 
-							<input type="text" data-ng-model="userID"></input>
+							<input type="text" data-ng-model="userID" ></input>
 						</div>
 					</div>
 					<hr />
-				<input type="text" data-ng-model="id"> Enter Id </input>
-					<div data-ng-repeat="event in testInput | filter: { category :id }">
+
+					<div data-ng-repeat="event in testInput | filter: { category: filterCategory }">
 						<h4>{{event.name}}</h4>
 
 						<h5>
-							<span class="label label-primary">{{event.category}}</span> <br />
-							<br />
+							<span class="label label-primary">{{event.category}}</span> <br /> <br />
 						</h5>
 
 						<h5>

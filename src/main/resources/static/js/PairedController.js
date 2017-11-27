@@ -73,6 +73,9 @@ app.controller('pairedEventController', function($scope, $http) {
 		.then(function(response){
 		});
 	}
+	$scope.updateCategoryInput = function(value) {
+		$scope.filterCategory = value ; 
+	}
 });
 
 app.controller('pairedCreateEventController', function($scope , $http) {
