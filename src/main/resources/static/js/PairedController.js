@@ -9,7 +9,7 @@ app.controller('pairedController', function($scope) {
 	$scope.displayEventImages = [
 		{source: "/images/programming.jpg", title: "CS 480 Study Group"},
 		{source: "/images/rockclimbing.jpeg", title:"Rock Climbing"},
-		{source:  "/images/hiking.jpeg", title: "Hiking"},
+		{source:  "/images/hiking.jpeg", title: "Backpacking and Hiking Trails"},
 		{source: "/images/strangerthings.jpg", title: "Stranger Things Fan Club"  },
 		{source: "/images/studying.jpeg", title: "Cramming for Finals"},
 		{source:  "/images/jamsesh.jpeg", title: "Musician's Club"},
