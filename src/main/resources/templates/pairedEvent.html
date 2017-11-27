@@ -81,7 +81,7 @@ footer {
 				<!-- Sidebar -->
 				<div class="col-sm-3 sidenav">
 					<h4>Filter By:</h4>
-					<div data-ng-repeat="event in testInput ">
+					<div data-ng-repeat="event in testInput | unique: 'category'">
 					{{event.category}}
 					</div>
 					<ul class="nav nav-pills nav-stacked" ng-model = "id">
