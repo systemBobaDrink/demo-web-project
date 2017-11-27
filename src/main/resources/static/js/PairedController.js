@@ -39,7 +39,7 @@ app.controller('pairedEventController', function($scope, $http) {
 
 app.controller('pairedCreateEventController', function($scope , $http) {
 	$scope.eventName = "Name of Event";
-	$scope.categories = ["Art", "Rock Climbing", "Studying", "Tennis", "Tutoring"];	
+	$scope.categories = ["Dance", "Gym and Fitness", "Music", "Professional Development", "Outdoor Activities", "TV Shows", "Study Groups", "Video Games"];	
 	//3. attach originalStudent model object
 	$scope.originalEvent = {
 			userEmail: '',
