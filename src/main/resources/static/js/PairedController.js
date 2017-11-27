@@ -14,6 +14,7 @@ app.controller('pairedController', function($scope) {
 		{source: "/images/studying.jpeg", title: "Cramming for Finals"},
 		{source:  "/images/jamsesh.jpeg", title: "Musician's Club"},
 		{source: "/images/pocketcamp.jpg", title:"AC Pocket Camp Addicts"},
+		{source: "/images/conference.jpeg", title: "UX Design Conference"},
 		{source: "/images/socialdance.jpeg", title: "Salsa Social Dance Event"} ];
 
 
