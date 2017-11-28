@@ -61,9 +61,11 @@ app.filter('unique', function () {
 app.controller('pairedEventController', function($scope, $http) {
 	$scope.userID = "";
 	$scope.getAllEvents = function(){
+		$scope.status = "active";
 		$http.get("/sqlGetAllEvents/")
 		.then(function mySuccess(response){
 			$scope.testInput = response.data;
+			$scope.status = "active";
 		}, function myError(response){
 			$scope.error = "Problem getting all events.";
 			$scope.testInput = response.data;
@@ -123,16 +125,21 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 });
 
 app.controller('pairedYourEventsController', function($scope, $http) {
-
 	$scope.getEventsUserIsApartOfReturnObject = function(userID){
 		$http.get("/sqlGetEventsUserIsApartOfReturnObject/" + "?userID=" + userID)
 		.then(function mySuccess(response){
 			$scope.testInput = response.data;
+			if($scope.testInput[0].description == "You don't have any events."){ 
+				$scope.testInput = "You don't have any events.";
+				$scope.bool = true; 
+			}
+			
 		}, function myError(response){
 			$scope.error = "Problem getting all events user is a part of.";
 			$scope.testInput = response.data;
 		});
 	}
+
 	$scope.updateCategoryInput = function(value) {
 		$scope.filterCategory = value ; 
 	}
