@@ -1,22 +1,33 @@
 var app = angular.module('pairedApp', []);
-app.controller('pairedController', function($scope) {
+app.controller('pairedController', function($scope, $location) {
 
+	$scope.test = "bbb";
+	$scope.curUrl=$location.absUrl();
+	$scope.port=$location.port();
+	$scope.protocol = $location.protocol();
+	$scope.host = $location.host();
+	$scope.fullUrl = $scope.protocol + "://" + $scope.host + ":" + $scope.port;
+	
 	$scope.carouselImages = [
 		{source: "/images/calpoly.jpg", title:"Califorinia State Polytechnic University Pomona"} ,
 		{source:  "/images/bric.jpg", title: "Bronco Recreation and Intramural Complex"},
 		{source: "/images/japanesegarden.jpg", title: "George and Sakaye Aratani Japanese Garden"}];
 
 	$scope.displayEventImages = [
-		{source: "/images/programming.jpg", title: "CS 480 Study Group"},
-		{source: "/images/rockclimbing.jpeg", title:"Rock Climbing"},
-		{source:  "/images/hiking.jpeg", title: "Backpacking and Hiking Trails"},
-		{source: "/images/strangerthings.jpg", title: "Stranger Things Fan Club"  },
-		{source: "/images/studying.jpeg", title: "Cramming for Finals"},
-		{source:  "/images/jamsesh.jpeg", title: "Musician's Club"},
-		{source: "/images/pocketcamp.jpg", title:"AC Pocket Camp Addicts"},
-		{source: "/images/conference.jpeg", title: "UX Design Conference"},
-		{source: "/images/socialdance.jpeg", title: "Salsa Social Dance Event"} ];
+		{source: "/images/programming.jpg", title: "CS 480 Study Group", link: "/events/#StudyGroups"},
+		{source: "/images/rockclimbing.jpeg", title:"Rock Climbing", link: "/events/#Fitness"},
+		{source:  "/images/hiking.jpeg", title: "Backpacking and Hiking Trails", link: "/events/#OutdoorActivities"},
+		{source: "/images/strangerthings.jpg", title: "Stranger Things Fan Club", link: "/events/#TV_Shows"},
+		{source: "/images/studying.jpeg", title: "Cramming for Finals", link: "/events/#StudyGroups"},
+		{source:  "/images/jamsesh.jpeg", title: "Musician's Club", link: "/events/#Music"},
+		{source: "/images/pocketcamp.jpg", title:"AC Pocket Camp Addicts", link: "/events/#Games"},
+		{source: "/images/conference.jpeg", title: "UX Design Conference", link: "/events/#Professional_Development"},
+		{source: "/images/socialdance.jpeg", title: "Salsa Social Dance Event", link: "/events/#Music"} ];
 
+//	$scope.eventLink = function(value){
+//		$scope.test = "aaa";
+//        $location.url($scope.fullUrl + "/events/");
+//   }
 
 });
 
@@ -58,9 +69,24 @@ app.filter('unique', function () {
     return items;
   };
 });
-app.controller('pairedEventController', function($scope, $http) {
+app.controller('pairedEventController', function($scope, $http, $location) {
 	$scope.userID = "";
+	$scope.curCategory = "aa";
+	$scope.updateCategoryInput = function(value) {
+		if(value == "StudyGroups")
+			value = "Study Groups"; 
+		if(value == "OutdoorActivities")
+			value = "Outdoor Activities";
+		if(value == "TV_Shows")
+			value = "TV Shows";
+		if(value == "Professional_Development")
+			value = "Professional Development";
+		$scope.filterCategory = value ; 
+	}
 	$scope.getAllEvents = function(){
+		$scope.curCategory = $location.absUrl().split('#')[2];
+		$scope.updateCategoryInput($scope.curCategory);
+		
 		$scope.status = "active";
 		$http.get("/sqlGetAllEvents/")
 		.then(function mySuccess(response){
@@ -76,14 +102,12 @@ app.controller('pairedEventController', function($scope, $http) {
 		.then(function(response){
 		});
 	}
-	$scope.updateCategoryInput = function(value) {
-		$scope.filterCategory = value ; 
-	}
+	
 });
 
 app.controller('pairedCreateEventController', function($scope , $http) {
 	$scope.eventName = "Name of Event";
-	$scope.categories = ["Art", "Fitness", "Music", "Professional Development", "Outdoor Activities", "Rock Climbing", "Study Groups", "Tennis", "TV Shows", "Video Games"];	
+	$scope.categories = ["Art", "Fitness", "Music", "Professional Development", "Outdoor Activities", "Study Groups", "TV Shows", "Games"];	
 	//3. attach originalStudent model object
 	$scope.originalEvent = {
 			userEmail: '',
