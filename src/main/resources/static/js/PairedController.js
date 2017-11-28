@@ -129,6 +129,7 @@ app.controller('pairedYourEventsController', function($scope, $http) {
 		$http.get("/sqlGetEventsUserIsApartOfReturnObject/" + "?userID=" + userID)
 		.then(function mySuccess(response){
 			$scope.testInput = response.data;
+			$scope.bool = false; 
 			if($scope.testInput[0].description == "You don't have any events."){ 
 				$scope.testInput = "You don't have any events.";
 				$scope.bool = true; 
