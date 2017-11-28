@@ -1,12 +1,5 @@
 var app = angular.module('pairedApp', []);
 app.controller('pairedController', function($scope, $location) {
-
-	$scope.test = "bbb";
-	$scope.curUrl=$location.absUrl();
-	$scope.port=$location.port();
-	$scope.protocol = $location.protocol();
-	$scope.host = $location.host();
-	$scope.fullUrl = $scope.protocol + "://" + $scope.host + ":" + $scope.port;
 	
 	$scope.carouselImages = [
 		{source: "/images/calpoly.jpg", title:"Califorinia State Polytechnic University Pomona"} ,
@@ -23,11 +16,6 @@ app.controller('pairedController', function($scope, $location) {
 		{source: "/images/pocketcamp.jpg", title:"AC Pocket Camp Addicts", link: "/events/#Games"},
 		{source: "/images/conference.jpeg", title: "UX Design Conference", link: "/events/#Professional_Development"},
 		{source: "/images/socialdance.jpeg", title: "Salsa Social Dance Event", link: "/events/#Music"} ];
-
-//	$scope.eventLink = function(value){
-//		$scope.test = "aaa";
-//        $location.url($scope.fullUrl + "/events/");
-//   }
 
 });
 

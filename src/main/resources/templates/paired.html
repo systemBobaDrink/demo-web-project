@@ -97,12 +97,7 @@ footer {
 		
 		<!-- Display Event Elements -->
 		<div class="container text-center">
-			<h2>Discover Your Passion {{test}}</h2>
-			<h2>cururl: {{curUrl}}</h2>
-			<h2>port: {{port}}</h2>
-			<h2>protocol: {{protocol}}</h2>
-			<h2>host: {{host}}</h2>
-			<h2>fullurl: {{fullUrl}}</h2>
+			<h2>Discover Your Passion</h2>
 			<hr/>
 			
 			<div ng-repeat="event in displayEventImages">
@@ -111,7 +106,7 @@ footer {
 				<div>
 					<div class="col-sm-4">
 						<a href="{{event.link}}">
-							<img src="{{event.source}}" class="img-responsive" data-ng-click="linking()"
+							<img src="{{event.source}}" class="img-responsive"
 							style="width:325px;height:250px;" alt="Image"></img>
 						</a>
 						<h4>{{event.title}}</h4>
