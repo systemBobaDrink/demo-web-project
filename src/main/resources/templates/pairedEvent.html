@@ -9,6 +9,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+$document.ready(
+	//onClick
+	$("#submitBtn").click(function(){
+         // show Modal
+         $('#myModal2').modal('show');
+    });	
+});
+</script>
 <style>
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
 .row.content {
@@ -163,9 +172,27 @@ footer {
 						
 						<!-- Attend button -->
 						<div ng-if="userID!=''">
-							<button type="button" ng-click="addUserEventLink(event.eventID)" class="btn btn-primary btn-sm">Attend</button>
+							<button type="button" data-toggle="modal" data-target="#myModal2" ng-click="addUserEventLink(event.eventID)" class="btn btn-primary btn-sm">Attend</button>
 						</div>
 						<!-- End of Attend button -->
+						
+						<!-- Modal -->
+							<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							    <div class="modal-dialog">
+							        <div class="modal-content">
+							            <div class="modal-header">
+							                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							                 <h4 class="modal-title" id="myModalLabel">Confirmed!</h4>
+							
+							            </div>
+							            <div class="modal-body">You have successfully signed up for this event, have fun!</div>
+							            <div class="modal-footer">
+							                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							            </div>
+							        </div>
+							    </div>
+							</div>
+							<!-- End of Modal -->
 						
 						<hr />
 					</div>
