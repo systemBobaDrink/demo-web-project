@@ -93,17 +93,10 @@ footer {
 	}
 }
 
-/*     #submitCreateEventForm .has-error .control-label,
-	#submitCreateEventForm .has-error .help-block,
-	#submitCreateEventForm .has-error .form-control-feedback {
-	    color: #f39c12;
-	}
+#clear {
+	display:none;
+}
 	
-	#submitCreateEventForm .has-success .control-label,
-	#submitCreateEventForm .has-success .help-block,
-	#submitCreateEventForm .has-success .form-control-feedback {
-	    color: #18bc9c;
-	} */
 </style>
 </head>
 
@@ -300,8 +293,9 @@ footer {
 
 							<br></br>
 							<!-- Submit Button -->
-							<input type="submit" value="Save" class="btn btn-primary" /> <input
-								type="reset" value="Reset" data-ng-click="resetForm()"
+							<input type="submit" value="Save" class="btn btn-primary" /> 
+							<input
+								id="clear" type="reset" value="Reset" data-ng-click="resetForm()"
 								class="btn" /> <br />
 							<!-- End of Submit Button -->
 						</form>
