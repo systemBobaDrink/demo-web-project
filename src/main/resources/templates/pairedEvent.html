@@ -125,7 +125,7 @@ footer {
 						</h5>
 
 						<h5>
-							<span class="label label-primary">{{event.category}}</span> <br /> <br />
+							<span class="label label-info">{{event.category}}</span> <br /> <br />
 						</h5>
 
 						<h5>
@@ -149,7 +149,7 @@ footer {
 							<p>Event Description: <span class='notbold'>{{event.description}}</span></p>
 						</h5>
 						<div ng-if="userID!=''">
-							<button type="button" ng-click="addUserEventLink(event.eventID)" class="btn btn-info">Attend</button>
+							<button type="button" ng-click="addUserEventLink(event.eventID)" class="btn btn-primary btn-sm">Attend</button>
 						</div>
 						<hr />
 					</div>
