@@ -9,7 +9,7 @@ app.controller('jdbcCntrl', function ($scope, $http) {
 	$scope.error = "";
 	
 	$scope.addUser = function() {
-		$http.post("/sqlAddUser/" + "?firstName=" + $scope.firstName + "&lastName=" + $scope.lastName)
+		$http.post("/sqlAddUser/" + "?firstName=" + $scope.firstName + "&lastName=" + $scope.lastName + "&email=" + $scope.email)
 		.then(function(response){
 			$scope.myData = response.data;
 			console.log($scope.myData);

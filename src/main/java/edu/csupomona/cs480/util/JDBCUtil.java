@@ -74,6 +74,7 @@ public class JDBCUtil {
 				ret += "ID: " + rs.getInt("id");
 				ret += ", firstName: " + rs.getString("firstName");
 				ret += ", lastName: " + rs.getString("lastName");
+				ret += ", email: " + rs.getString("email");
 			}
 			
 			rs.close();
@@ -88,7 +89,7 @@ public class JDBCUtil {
 		
 	}
 	
-	public void addUser(String firstName, String lastName) {
+	public void addUser(String firstName, String lastName, String email) {
 		//Used with the addUser method found in RESTController.
 		//Used to insert users into the users table, with parameters firstName and lastName.
 		
@@ -96,7 +97,7 @@ public class JDBCUtil {
 		
 		try {
 			statement = conn.createStatement();
-			String sql = "INSERT INTO `basicDB`.`users` (`firstName`, `lastName`) VALUES ('" + firstName + "', '" + lastName + "');";			
+			String sql = "INSERT INTO `basicDB`.`users` (`firstName`, `lastName`, `email`) VALUES ('" + firstName + "', '" + lastName + "', '" + email + "');";			
 			statement.executeUpdate(sql);
 			
 			statement.close();
@@ -124,6 +125,7 @@ public class JDBCUtil {
 				user.setId(myInt.toString());
 				user.setFirstName(rs.getString("firstName"));
 				user.setLastName(rs.getString("lastName"));
+				user.setEmail(rs.getString("email"));
 				System.out.println("end of while loop");
 			}		
 			rs.close();
@@ -255,6 +257,7 @@ public class JDBCUtil {
 		}
 		return json;
 	}
+
 	public ArrayList<Events> getEventsUserIsApartOfReturnObject(String userID) {
 		//Returns the events a user is a part of.
 		java.sql.Statement statement;
@@ -264,6 +267,7 @@ public class JDBCUtil {
 		
 		ResultSet rs = null;
 		try {
+			System.out.println("In getEventsUser.. userid: " + userID);
 			statement = conn.createStatement();
 			String sql = "SELECT eventID FROM `basicDB`.`user_event_link` WHERE userID= " + userID + ";";
 			rs = statement.executeQuery(sql);
@@ -386,5 +390,30 @@ public class JDBCUtil {
 		}
 		
 		return myList;
+	}
+	
+	public String getUserIDFromEmail(String email) {
+		java.sql.Statement statement;
+		
+		String ret = "failed";
+		try {
+			statement = conn.createStatement();
+			System.out.println(email);
+			String sql = "SELECT id FROM basicDB.users WHERE email='" + email + "';";
+			ResultSet rs = statement.executeQuery(sql);
+			
+			rs.next(); //Needed to bring cursor to first row in returned table.
+
+			ret = rs.getString("id");
+			
+			System.out.println(ret);
+			
+			rs.close();
+			statement.close();
+			conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ret;
 	}
 }

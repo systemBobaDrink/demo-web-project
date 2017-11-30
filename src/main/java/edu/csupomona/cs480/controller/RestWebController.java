@@ -260,11 +260,12 @@ public class RestWebController {
 	void addUser(
 			@RequestParam("firstName") String firstName,
 			@RequestParam(value = "lastName") String lastName,
-			@RequestParam(value = "major", required = false) String major){
+			@RequestParam(value = "major", required = false) String major,
+			@RequestParam(value = "email") String email){
 		
 		
 		JDBCUtil util = new JDBCUtil();
-		util.addUser(firstName, lastName);
+		util.addUser(firstName, lastName, email);
 	}
 	
 	@RequestMapping(value = "/sqlGetUserByID/", method = RequestMethod.GET)
@@ -360,6 +361,16 @@ public class RestWebController {
 		JDBCUtil util = new JDBCUtil();
 		
 		ArrayList<Events> rs = util.getEventsUserIsApartOfReturnObject(userID);
+		
+		return rs;
+	}
+	
+	@RequestMapping(value ="/sqlGetUserIDFromEmail/", method = RequestMethod.GET)
+	public String sqlGetUserIDFromEmail(
+			@RequestParam(value = "email") String email) {
+		JDBCUtil util = new JDBCUtil();
+		
+		String rs = util.getUserIDFromEmail(email);
 		
 		return rs;
 	}

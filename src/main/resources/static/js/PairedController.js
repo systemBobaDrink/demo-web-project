@@ -90,6 +90,27 @@ app.controller('pairedEventController', function($scope, $http, $location) {
 		.then(function(response){
 		});
 	}
+	$scope.getUserIDFromEmail = function(){
+		
+		
+		var decodedCookie = decodeURIComponent(document.cookie);
+	    var string = decodedCookie.split(';');
+	    
+	    var emailCookie = string[1].split('=');
+	    $scope.email = emailCookie[1];
+	    
+	    if($scope.email == "")
+	    	return;
+	    
+		$http.get("/sqlGetUserIDFromEmail/" + "?email=" + $scope.email)
+		.then(function mySuccess(response){
+			
+			$scope.userID = response.data;
+		}, function myError(response){
+			
+			$scope.error = "Problem getting id from email";
+		});
+	}
 	
 });
 
@@ -137,24 +158,103 @@ app.controller('pairedCreateEventController', function($scope , $http) {
 });
 
 app.controller('pairedYourEventsController', function($scope, $http) {
+	$scope.testMe = "aaaa";
+	
 	$scope.getEventsUserIsApartOfReturnObject = function(userID){
-		$http.get("/sqlGetEventsUserIsApartOfReturnObject/" + "?userID=" + userID)
-		.then(function mySuccess(response){
-			$scope.testInput = response.data;
-			$scope.bool = false; 
-			if($scope.testInput[0].description == "You don't have any events."){ 
-				$scope.testInput = "You don't have any events.";
-				$scope.bool = true; 
+		$scope.getUserIDFromEmail(function (data) {
+			if(!data.err){
+				$http.get("/sqlGetEventsUserIsApartOfReturnObject/" + "?userID=" + $scope.userID)
+				.then(function mySuccess(response){
+					$scope.testInput = response.data;
+					$scope.bool = false; 
+					if($scope.testInput[0].description == "You don't have any events."){ 
+						$scope.testInput = "You don't have any events.";
+						$scope.bool = true; 
+					}
+					
+				}, function myError(response){
+					$scope.error = "Problem getting all events user is a part of.";
+					$scope.testInput = response.data;
+				});
 			}
-			
-		}, function myError(response){
-			$scope.error = "Problem getting all events user is a part of.";
-			$scope.testInput = response.data;
 		});
+		
+		
 	}
 
 	$scope.updateCategoryInput = function(value) {
 		$scope.filterCategory = value ; 
 	}
+	
+	$scope.getUserIDFromEmail = function(callback){
+		
+		
+		var decodedCookie = decodeURIComponent(document.cookie);
+	    var string = decodedCookie.split(';');
+	    
+	    var emailCookie = string[1].split('=');
+	    $scope.email = emailCookie[1];
+	    
+	    if($scope.email == "")
+	    	return;
+	    
+		$http.get("/sqlGetUserIDFromEmail/" + "?email=" + $scope.email)
+		.then(function mySuccess(response){
+			
+			$scope.userID = response.data;
+			callback({err: false});
+		}, function myError(response){
+			
+			$scope.error = "Problem getting id from email";
+			callback({err: true});
+		});
+	}
+});
 
+app.controller('pairedLoginController', function($scope, $window) {
+	$scope.hasName = "Log in";
+	$scope.loggedIn = false;
+	$scope.username = "change this";
+	$scope.email = "|| also this";
+	
+	$scope.initTest = function() {
+		if(document.cookie.indexOf('username=') == -1) {
+			document.cookie = "username=; path=/;";
+			document.cookie = "email=; path=/;"
+			$scope.hasName = "Log in";
+			return;
+		}
+		
+		var decodedCookie = decodeURIComponent(document.cookie);
+	    var string = decodedCookie.split(';');
+	    
+	    var nameCookie = string[0].split('=');
+	    var emailCookie = string[1].split('=');
+	    $scope.username = nameCookie[1];
+	    $scope.email = emailCookie[1];
+	    
+	    
+	    if($scope.username == "")
+	    	$scope.loggedIn = false;
+	    else {
+	    	$scope.loggedIn = true;
+	    }
+	}
+	$scope.deleteCookie = function() {
+		document.cookie = "username=; path=/;";
+		document.cookie = "email=; path=/;"
+		$window.location.reload();
+	}
+	
+	$scope.createCookie = function() {
+		var usernameString = "username=" + $scope.username + "; path=/;";
+		document.cookie = usernameString;
+		
+		var emailString = "email=" + $scope.email + "; path=/;";
+		document.cookie = emailString;
+		
+		$loggedIn = true;
+		$window.location.reload();
+	}
+	
 });

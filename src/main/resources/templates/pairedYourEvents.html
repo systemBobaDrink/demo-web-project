@@ -71,9 +71,36 @@ footer {
 						<li><a href="/createEvent/">Create Events</a></li>
 						<li><a href="/yourEvent/">My Events</a></li>
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-					</ul>
+					
+					<div class="nav navbar-nav navbar-right" ng-controller="pairedLoginController" ng-init="initTest()">
+						<button type="button" class="btn btn-success btn-lg" ng-if="!loggedIn" data-toggle="modal" data-target="#myModal">Log in</button>
+						<button type="button" class="btn btn-success btn-lg" ng-if="loggedIn">Hi {{username}}!</button>
+						<button type="button" class="btn btn-success btn-lg" ng-if="loggedIn" ng-click="deleteCookie()">Log out</button>
+						
+						
+						<div class="modal fade" id="myModal" role="dialog">
+						    <div class="modal-dialog">
+						    
+						      <!-- Modal content-->
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						          <h4 class="modal-title">Enter Login information</h4>
+						        </div>
+						        <div class="modal-body">
+							        <input type="text" data-ng-model="username" placeholder="Enter name here"></input>
+							        <input type="text" data-ng-model="email" placeholder="Enter email here"></input>
+							        <button data-ng-click="createCookie()">Log in</button>
+						        </div>
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        </div>
+						      </div>
+						      
+						    </div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</nav>
@@ -97,17 +124,8 @@ footer {
 				<!-- Events -->
 
 				<div class="col-sm-9">
-					<div>
+					<div data-ng-init="getEventsUserIsApartOfReturnObject()">
 						<h2>Your Events</h2>
-
-						<!-- NEED TO UPDATE THIS for the user email http call  -->
-						<div>
-							<span class="glyphicon glyphicon-asterisk"></span>Enter your UserID: <input type="text"
-								data-ng-model="userID"
-							> </input>
-							<button class="btn btn-success btn-sm"
-								data-ng-click="getEventsUserIsApartOfReturnObject(userID)" >Submit</button>
-						</div>
 					</div>
 					<hr />
 					<div ng-if="bool">
@@ -116,7 +134,6 @@ footer {
 							Go to <a href="/events/">Search Events</a> to find events you can attend!
 						</div>
 					</div>
-
 					<div data-ng-repeat="event in testInput | filter: { category: filterCategory }">
 						<h3>{{event.name}}</h3>
 
