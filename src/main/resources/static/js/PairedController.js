@@ -7,14 +7,14 @@ app.controller('pairedController', function($scope, $location) {
 		{source: "/images/japanesegarden.jpg", title: "George and Sakaye Aratani Japanese Garden"}];
 
 	$scope.displayEventImages = [
-		{source: "/images/programming.jpg", title: "CS 480 Study Group", link: "/events/#StudyGroups"},
+		{source: "/images/programming.jpg", title: "CS 365 Study Group", link: "/events/#StudyGroups"},
 		{source: "/images/rockclimbing.jpeg", title:"Rock Climbing", link: "/events/#Fitness"},
 		{source:  "/images/hiking.jpeg", title: "Backpacking and Hiking Trails", link: "/events/#OutdoorActivities"},
 		{source: "/images/strangerthings.jpg", title: "Stranger Things Fan Club", link: "/events/#TV_Shows"},
 		{source: "/images/studying.jpeg", title: "Cramming for Finals", link: "/events/#StudyGroups"},
 		{source:  "/images/jamsesh.jpeg", title: "Musician's Club", link: "/events/#Music"},
-		{source: "/images/pocketcamp.jpg", title:"AC Pocket Camp Addicts", link: "/events/#Games"},
-		{source: "/images/conference.jpeg", title: "UX Design Conference", link: "/events/#Professional_Development"},
+		{source: "/images/pocketcamp.jpg", title:"Video Game Addicts", link: "/events/#Games"},
+		{source: "/images/conference.jpeg", title: "Professional Development and Conferences", link: "/events/#Professional_Development"},
 		{source: "/images/socialdance.jpeg", title: "Salsa Social Dance Event", link: "/events/#Music"} ];
 
 });
