@@ -22,15 +22,15 @@
 
 	<dependencies>
 		<dependency>
-    			<groupId>com.google.maps</groupId>
-   			<artifactId>google-maps-services</artifactId>
-    			<version>0.1.1</version>
+			<groupId>com.google.maps</groupId>
+			<artifactId>google-maps-services</artifactId>
+			<version>0.1.1</version>
 		</dependency>
-<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
 		<dependency>
-    			<groupId>org.jsoup</groupId>
-    			<artifactId>jsoup</artifactId>
-    			<version>1.10.3</version>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.10.3</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.google.maps/google-maps-services -->
@@ -41,9 +41,9 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>org.json</groupId>
-		    <artifactId>json</artifactId>
-		    <version>20090211</version>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
 		</dependency>
 
 		<dependency>
@@ -72,17 +72,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
-		
-				<dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
- 
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
- 
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -97,62 +97,63 @@
 		</dependency>
 
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>1.2.0.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        
-       <dependency>
-          <groupId>joda-time</groupId>
-          <artifactId>joda-time</artifactId>
-          <version>2.9.9</version>
-       </dependency>
-       
- <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc  NOT SURE if this is used even-->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>1.2.0.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
- 		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-jdbc</artifactId>
-  		    <version>4.3.11.RELEASE</version>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.9</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc 
+			NOT SURE if this is used even -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.3.11.RELEASE</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
-  		    <groupId>mysql</groupId>
-  		    <artifactId>mysql-connector-java</artifactId>
- 		    <version>6.0.6</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.6</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<dependency>
-  			<groupId>org.hibernate</groupId>
-    		<artifactId>hibernate-core</artifactId>
-    		<version>5.2.11.Final</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.2.11.Final</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina -->
 		<dependency>
-    		<groupId>org.apache.tomcat</groupId>
-    		<artifactId>tomcat-catalina</artifactId>
-    		<version>9.0.1</version>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina</artifactId>
+			<version>9.0.1</version>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-        
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
 		<dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-		
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-       
+
 	</dependencies>
 
 	<build>
@@ -162,14 +163,15 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-compiler-plugin</artifactId>
-		        <configuration>
-		          <!-- JDK version; If you are using higher version, free feel to update it. -->
-		          <source>1.7</source>
-		          <target>1.7</target>
-		        </configuration>
-		    </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<!-- JDK version; If you are using higher version, free feel to update 
+						it. -->
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

@@ -6,12 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.mysql.cj.api.jdbc.Statement;
-
 import org.json.*;
 
 import edu.csupomona.cs480.data.Events;
-import edu.csupomona.cs480.data.User;
+
 
 public class JDBCUtil {
 	final static String DATABASE = "users";
@@ -107,37 +105,7 @@ public class JDBCUtil {
 		}
 	}
 	
-	public User getUserByID(String id) {
-		//Returns the information of the user with the specified ID.
-		
-		java.sql.Statement statement;
-				
-		User user = new User();
-		
-		
-		try {
-			statement = conn.createStatement();
-			String sql = "SELECT * FROM `basicDB`.`users` WHERE id= " + id + ";";
-			ResultSet rs = statement.executeQuery(sql);
-			
-			while(rs.next()) {
-				Integer myInt = rs.getInt("id");
-				user.setId(myInt.toString());
-				user.setFirstName(rs.getString("firstName"));
-				user.setLastName(rs.getString("lastName"));
-				user.setEmail(rs.getString("email"));
-				System.out.println("end of while loop");
-			}		
-			rs.close();
-			statement.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return user;
-		
-	}
+	
 	
 	public void addEvent(String eventName, String hostEmail, String description, String priv, String location, String eventTime, String eventDate, String eventCategory) {
 		//Used with the addEvent method found in RESTController.
